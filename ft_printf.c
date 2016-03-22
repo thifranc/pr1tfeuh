@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/13 15:35:36 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/17 17:55:45 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/21 10:37:21 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		ft_arg_nb(va_list va, char **str, int code)
 		if (code == 666)
 			nb = va_arg(va, long);
 		else
-			nb = va_arg(va, int);
+			nb = va_arg(va, unsigned int);
 		ft_putnb(nb);
 	}
 	else
@@ -145,15 +145,15 @@ int		main(void)
 {
 	int	nb_arg;
 	int	*i;
-	char	lol;
+	char	*lol;
 
 	i = malloc(4);
 	*i = 33;
-	lol = 'a';
+	lol = "lol";
 	nb_arg = ft_count_opt("% % % % % mes schalles%% %d");
 	printf("%d ===== nb arg\n", nb_arg);
-	ft_printf(nb_arg, "lol %e %c %s %d %s mes schalles %d", 97, 2147483655, "de", 83650, "et je mange", 433);
+	ft_printf(nb_arg, "lol %e %c %s %d %s mes schalles %d", 97, 2147483655, "de", 83650, "et je mange", lol);
 	printf("\n% -7.d||% d||%+d|||%-3.2s\n", 123, 433, 433, "lol");
-	printf("%hhd\n", lol);
+	printf("%p\n", lol);
 	return (0); 
 }

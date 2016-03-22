@@ -6,91 +6,99 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/16 10:58:05 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/21 10:38:31 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_get_opt_char(char **s, char **flag, char *f, int option)
+int		ft_get_first_char(char **s, char *flag)
 {
-	if (option == 1)
+	while (**s && ft_get_char("#+- 0", **s) != -1)//pb correspondance ** et *
 	{
-		while (**s && ft_get_char(f, **s) != -1)//pb correspondance ** et *
-		{//if %########s printf marche dc ok
-			if (**s == '#')
-				*flag[0] = '#';
-			if (**s == '0' || **s == '-')
-				*flag[1] = **s;
-			if (**s == '+' || **s == ' ')
-				*flag[2] = **s;
-			(*s)++;
-		}
+		if (**s == '#')
+			flag[0] = '#';
+		if ((**s == '0' && flag[1] == '-') || (**s == '-' && flag[1] == '0')
+		|| (**s == '+' && flag[2] == ' ') || (**s == ' ' && flag[2] == '+'))
+			return (0);
+		if (**s == '0' && flag[1] != '-')
+			flag[1] = **s;
+		if (**s == '-' && flag[1] != '0')
+			flag[1] = **s;
+		if (**s == ' ')
+			flag[2] = **s;
+		if (**s == '+')
+			flag[2] = **s;
+		(*s)++;
 	}
-	else
-		while (**s && ft_get_char(f, **s) != -1)
-		{
-			if (**s == *(*s + 1) && (**s == 'h' || **s == 'l'))//protection
-			{
-				*flag[3] = **s - 32;
-				(*s)++;
-			}
-			else
-				*flag[3] = **s;
-			(*s)++;
-		}
+	return (1);
 }
 
-int		ft_double(char *s, char *code)
+int		ft_get_last_char(char **s, char *flag)
 {
-	int		i;
-	char	back[2];
-
-	i = 0;
-	ft_bzero(back, 2);
-	while (s[i] != '.' && ft_get_char(code, s[i]) == -1)
+	while (**s && ft_get_char("hjzl", **s) != -1)
 	{
-		if ((s[i] == '0' || s[i] == '-') && back[0])
-			return (1);
-		if ((s[i] == '0' || s[i] == '-') && !back[0])
-			back[0] = s[i];
-		if ((s[i] == ' ' || s[i] == '+') && back[1])
-			return (1);
-		if ((s[i] == ' ' || s[i] == '+') && !back[1])
-			back[1] = s[i];
-		i++;
+		if (ft_get_char("hjzl", **s) != -1 && flag[3])//eq a flag[3] != '\0'
+			return (0);
+		if (**s == *(*s + 1) && (**s == 'h' || **s == 'l'))//protection autre doublons
+		{
+			flag[3] = **s - 32;
+			(*s)++;
+		}
+		else
+			flag[3] = **s;
+		(*s)++;
 	}
-	return (0);
+	flag[4] = **s;//charge cvtisseur
+	return (1);
+}
+
+int		final_check(char *flag)
+{
+	if ((flag[2] == '-' || flag[2] == '+') && ft_get_char("DIdi", flag[2]) == -1)
+		return (0);
+	if (flag[0] == '#' && ft_get_char("xXo", '#') == -1)
+		return (0);
+	if (ft_get_char("hHjz", flag[3]) != -1 && ft_get_char("psScC", flag[4]) != -1)
+		return (0);
+	if (ft_get_char("ouxOUX", flag[4]) != -1 && (flag[2] == ' ' || flag[2] == '+'))//if flag[2] existe
+		return (0);
+	return (1);
+	//autres tests a faire genre h et s etc
+	//x et + pas ensembles (surement + et les unsigned)
 }
 
 int		ft_error(void)
 {
-	ft_putstr("erreur allez on lache rien tu vas le nik le prog\n");
+	ft_putstr("ic'est qui qui sait pas lire l'usage bordel\n");
 	return (0);
 }
 
-int		ft_get_opt(char *s, char *flag, int *tab)//ft_error exsite pas
+int		ft_get_opt(char *s, char *flag, int *tab)//recoit tab et flag car le main les clear
 {
-	if (ft_double(s, "hljzsSpdDioOuUxXcC") == 1)
-		return (ft_error());
-	ft_get_opt_char(&s, &flag, "#0- +", 1);
-	if (!*s)
-		return (ft_error());
+	printf("JJJJJJJJJJJJJJJEEEEEEEEEEEEEEEEEEEEEEEE T  AAIIIIIIIIIIIMMMMMMMMMMMEEEEEEEEEEEE");
+	if (!ft_get_first_char(&s, flag))
+		return (ERROR);
 	if ('1' <= *s && *s <= '9')
 	{
 		tab[0] = ft_atoi(s);
 		s += ft_nb_len_base(tab[0], 10);
 	}
-	if (*s == '.' && '0' <= *(s + 1) && *(s + 1) <= '9')
-	{
-		tab[1] = ft_atoi(s + 1);
-		s += ft_nb_len_base(tab[1], 10) + 1;
-	}
 	if (*s == '.')
-		s++;
-	ft_get_opt_char(&s, &flag, "hljzsSpdDioOuUxXcC", 2);
-	if (!*s)
-		return (ft_error());
-	flag[4] = *s;
-	return (1);
+	{
+		if (*(s + 1) == '-')
+			return (ERROR);
+		if ('0' <= *(s + 1) && *(s + 1) <= '9')
+		{
+			tab[1] = ft_atoi(s + 1);
+			s += ft_nb_len_base(tab[1], 10) + 1;
+		}
+		else
+			s++;
+	}//attention ! difference entre pas de precision et precision = 0 si pas prec : tab[1] == -1
+	else
+		tab[1] == -1;
+	if (!ft_get_last_char(&s, flag))
+		return (ERROR);
+	return (final_check(flag));
 }
