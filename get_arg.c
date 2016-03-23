@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:02:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/21 09:54:40 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/23 17:17:29 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,23 @@ long long int	get_arg_nb(va_list va, char c, char *flag)
 		if (ft_get_char("diouX", c) != -1)
 			out = va_arg(va, int);
 		if (c == 'p')
-			out = va_arg(va, long long);//puis printf hexa prefixe de 0x10
+			out = va_arg(va, long long);//puis printf hexa prefixe de 0x
 		else if (c == 'c' && flag[3] != 'l')
 			out = va_arg(ca, char);
 	}
 	return (out);
 }
 
-void			get_arg(va_list va, char *flag, int *tab)
+void			get_arg(va_list va, char *flag, int *tab, s_struct *s)
 {
 	long long int	lli;
-	struct			s_data;
 
 	if (flag[4] == 'C' || (flag[3] == 'l' && flag[4] == 'c'))
-		c_spe = va_arg(va, wint_t);
+		*s.c_spe = va_arg(va, wint_t);
 	else if (flag[4] == 's' && flag[3] != 'l')
-		s = va_arg(va, const char *);
+		*s.s = va_arg(va, const char *);
 	else if (flag[4] == 'S' || (flag[3] == 'l' && flag[4] == 's'))
-		s_spe = va_arg(va, wchar_t *);
+		*s.s_spe = va_arg(va, wchar_t *);
 	else if (ft_get_char("pcdiouxDIOUX", flag[4]) != -1)
 		lli = get_arg_nb(va, flag[4], flag);
 	if (lli < 0)
@@ -93,7 +92,7 @@ void			get_arg(va_list va, char *flag, int *tab)
 	}//code utile pr print beg
 	//gerer ensuite appel de fonction en fonction du flag;
 	if (lli && flag[4] != 'c')
-		write_nb(lli, flag, );//pb passer flag + tab d'int => struct ?
+		do_nb(lli, flag, tab);//pb passer flag + tab d'int => struct ?
 	else
-		write_wrd();
+		do_wrd(*s, flag, tab);
 }

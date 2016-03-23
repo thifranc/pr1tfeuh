@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/21 10:38:31 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/23 17:21:19 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int		final_check(char *flag)
 	return (1);
 	//autres tests a faire genre h et s etc
 	//x et + pas ensembles (surement + et les unsigned)
+	//'p' et ' ' pas ensembles
 }
 
 int		ft_error(void)
