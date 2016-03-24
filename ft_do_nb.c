@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 09:03:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/24 10:34:04 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/24 14:24:10 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 LE MAIN (+- = FT_PRINTF DEJA EXISTANT)
 TOUT LE DEBUG MAIS INSHA ALLH Y  PAS BCP
 MAKEFILE + LIBFTPRINTF.H
-affilier chaines codes pour putnb
 preparer options + string
  * */
 
@@ -53,23 +52,28 @@ void	print_beg(char *flag, int *tab, int max_char, long long int arg)
 	ft_print_n_char('0', tab[1] - ft_nb_len_base(arg, tab[2]));
 }
 
-void	print_lli(char *flag, int *tab, long long int arg)
+void	do_nb(char *flag, int *tab, long long int arg)
 {
 	int		max_char;
-	char	*code10;
-	char	*code8;
-	char	*code16min;
-	char	*code16max;
 
-	code10 = "0123456789";
-	code8 = "01234567";
-	code16min = "0123456789abcdef";
-	code16max = "0123456789ABCDEF";
 	max_char = get_total_char(arg, flag, tab);
 	tab[3] += max_char;// ici tab[3] incremente
 	print_beg(flag, tab, max_char, arg);
 	flag[4] == 'X' ? write(1, "0X", 2) : write(1, "0x", 2);
-	ft_putnb_base(arg, tab[2]);//pb differencier diff chaines char
+	if (tab[2] == 16 && flag[4] == 'X')
+		tab[2] = 1;
+	ft_putnb_base(arg, ft_get_code(tab[2]));
 	if (flag[1] == '-')
 		ft_print_n_char(' ', tab[0] - max_char);
+}
+
+char	*ft_get_code(int base)
+{
+	char	*out;
+
+	if (base == 1)
+		return ("0123456789ABCDEF");
+	out = "0123456789abcdefghijklmonpqrstuvwxyz";
+	out[base] = '\0';
+	return (out);
 }

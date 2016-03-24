@@ -34,6 +34,28 @@ void	ft_putwchar(wchar_t c)
 	}
 }
 
+int		ft_wstrlen(wchar_t *str)
+{
+	int	i;
+	int	ct;
+
+	i = 0;
+	ct = 0;
+	while (str[i])
+	{
+		if (str[i] <= 0x7F)
+			ct += 1;
+		else if (str[i] <= 0x7FF)
+			ct += 2;
+		else if (str[i] <= 0xFFFF)
+			ct += 3;
+		else // (str[i] <= 0x1FFFFF)
+			ct +=4;
+		i++;
+	}
+	return (ct);
+}
+
 void	putwstr(wchar_t *lol)
 {
 	int	i;
@@ -55,15 +77,18 @@ int		main()
 		printf("set %s\n", l);
 	printf("\n%07d\n", 33);
 	printf("%07.d\n", 33);
-	ft_putwchar(545454);
+	ft_putwchar(45454);
 	putwstr(L"\n滑石不生苔) 常改行是发不了财的\n");
 	putwstr(L"لاتنفق كلمتين اذا كفتك كلمة ـ مثل عربي\n");
 	putwstr(L"宜しく/どうぞ宜しく/どうぞ宜しくお願いします。\n");
 	putwstr(L"Ευχαριστώ για την βοήθεια\n");
 	putwstr(L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ\n");
 	printf("%p\n", l);
-	printf("%22p", l);
-
+	printf("%22p\n", l);
+	printf("%d ======= STRLEN\n", ft_wstrlen(L"宜しく/ど"));
+	printf("%d = strlen &RETOUR FONCTION == %d \n", ft_wstrlen(L"宜しく/ど"), printf("%ls", L"宜しく/ど"));
+	printf("lol");
+	printf("tema mon char ==> %.4c", 'c');
 	return (0);
 }
 

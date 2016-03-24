@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:02:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/24 10:17:32 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/24 17:13:55 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,8 @@ long long int	get_arg_nb(va_list va, char c, char *flag)
 	{
 		if (ft_get_char("diouX", c) != -1)
 			out = va_arg(va, int);
-		if (c == 'p')
+		else //(c == 'p')
 			out = va_arg(va, long long);//puis printf hexa prefixe de 0x
-		else if (c == 'c' && flag[3] != 'l')
-			out = va_arg(va, int);
 	}
 	return (out);
 }
@@ -85,7 +83,9 @@ void			get_arg(va_list va, char *flag, int *tab, s_data s)
 		s.s = va_arg(va, const char *);
 	else if (flag[4] == 'S' || (flag[3] == 'l' && flag[4] == 's'))
 		s.s_spe = va_arg(va, wchar_t *);
-	else //(ft_get_char("pcdiouxDIOUX", flag[4]) != -1)
+	else if (flag[4] == 'c')
+		s.c = va_arg(va, int);
+	else //(ft_get_char("pdiouxDIOUX", flag[4]) != -1)
 		lli = get_arg_nb(va, flag[4], flag);
 	if (lli < 0)
 	{
@@ -93,8 +93,8 @@ void			get_arg(va_list va, char *flag, int *tab, s_data s)
 		lli = -lli;
 	}//code utile pr print beg
 	//gerer ensuite appel de fonction en fonction du flag;
-	if (lli && flag[4] != 'c')
-		do_nb(lli, flag, tab);//pb passer flag + tab d'int => struct ?
+	if (lli)
+		do_nb(flag, tab, lli);//pb passer flag + tab d'int => struct ?
 	else
-		do_wrd(s, flag, tab);
+		do_wrd(flag, tab, s);
 }

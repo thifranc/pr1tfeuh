@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 17:57:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/24 10:09:29 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/24 17:39:56 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,73 @@
 
 void	do_wrd(char *flag, int *tab, s_data s)
 {
-	if (s.c_spe)
-		tab[3] += ft_putwchar(s.c_spe);
+	int		max_char;
+
+	max_char = get_max_char(s, tab);
+	if (!flag[1])
+		ft_print_n_char('0', tab[0] - max_char);
+	if (s.c_spe)//gerer debut de arg
+		ft_putwchar(s.c_spe);
 	else if (s.s_spe)
-		tab[3] += ft_putwstr(s.s_spe);
+		ft_putwstr(s.s_spe);
 	else if (s.s)
-		tab[3] += ft_strcount(s.s, '\0');
+		ft_putstr(s.s);
+	else // (s.c)
+		ft_putchar(s.c);
+	tab[3] += max_char;//modifier appels fonctions;
+	if (flag[1] == '-')
+		ft_print_n_char('0', tab[0] - max_char);
+
 }
 
-int		ft_putwstr(wchar_t *str)
+int		get_max_char(s_data s, int *tab)
+{
+	int	max_char;
+
+	max_char = 0;
+	if (s.s)
+		max_char = (ft_strlen(s.s) > tab[1] ? tab[1] : ft_strlen(s.s));
+	if (s.s_spe)
+		max_char = (ft_wstrlen(s.s_spe) > tab[1] ? tab[1] : ft_wstrlen(s.s_spe));
+	if (s.c)
+		max_char = (1 > tab[1] ? tab[1] : 1);
+	else //(s.c_spe)
+	{
+		if (s.c_spe <= 0x7F)
+			max_char = 1;
+		else if (s.c_spe <= 0x7FF)
+			max_char = 2;
+		else if (s.c_spe <= 0xFFFF)
+			max_char = 3;
+		else
+			max_char = 4;
+	}
+	return (max_char);
+}
+
+int		ft_wstrlen(wchar_t *str)
+{
+	int	i;
+	int	ct;
+
+	i = 0;
+	ct = 0;
+	while (str[i])
+	{
+		if (str[i] <= 0x7F)
+			ct += 1;
+		else if (str[i] <= 0x7FF)
+			ct += 2;
+		else if (str[i] <= 0xFFFF)
+			ct += 3;
+		else // (str[i] <= 0x1FFFFF)
+			ct += 4;
+		i++;
+	}
+	return (ct);
+}
+
+void	ft_putwstr(wchar_t *str)
 {
 	int	i;
 
@@ -32,10 +90,9 @@ int		ft_putwstr(wchar_t *str)
 		ft_putwchar(str[i]);
 		i++;
 	}
-	return (i);
 }
 
-int		ft_putwchar(wchar_t c)
+void	ft_putwchar(wchar_t c)
 {
 	int		cpy;
 	int		len;
@@ -61,5 +118,4 @@ int		ft_putwchar(wchar_t c)
 			max--;
 		}
 	}
-	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/24 10:19:19 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/24 16:41:11 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int		final_check(char *flag)
 	//autres tests a faire genre h et s etc
 	//x et + pas ensembles (surement + et les unsigned)
 	//'p' et ' ' pas ensembles
+	//%s que ac '-' et les tab ok
+	//%c non ac precision
 }
 
 int		ft_error(void)
