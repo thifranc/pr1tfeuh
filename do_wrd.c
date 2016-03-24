@@ -6,13 +6,13 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 17:57:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/23 17:17:06 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/24 10:09:29 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	print_wrd(char *flag, int *tab, s_struct s)
+void	do_wrd(char *flag, int *tab, s_data s)
 {
 	if (s.c_spe)
 		tab[3] += ft_putwchar(s.c_spe);
@@ -35,7 +35,7 @@ int		ft_putwstr(wchar_t *str)
 	return (i);
 }
 
-void	ft_putwchar(wchar_t c)
+int		ft_putwchar(wchar_t c)
 {
 	int		cpy;
 	int		len;
@@ -50,8 +50,8 @@ void	ft_putwchar(wchar_t c)
 	{
 		max = len > 11 ? 2 : 1;
 		max += len > 16 ? 1 : 0;
-		mask = 256 - ft_power(2, (8 - max));
-		(cpy >> len - (len - 6) | mask);
+		mask = 256 - ft_power(2, (7 - max));
+		cpy = (cpy >> (max * 6) | mask);
 		write(1, &cpy, 1);
 		while (max)
 		{

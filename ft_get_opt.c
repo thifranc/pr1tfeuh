@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/23 17:21:19 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/24 10:19:19 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		ft_get_opt(char *s, char *flag, int *tab)//recoit tab et flag car le main l
 {
 	printf("JJJJJJJJJJJJJJJEEEEEEEEEEEEEEEEEEEEEEEE T  AAIIIIIIIIIIIMMMMMMMMMMMEEEEEEEEEEEE");
 	if (!ft_get_first_char(&s, flag))
-		return (ERROR);
+		return (0);//ERROR
 	if ('1' <= *s && *s <= '9')
 	{
 		tab[0] = ft_atoi(s);
@@ -88,7 +88,7 @@ int		ft_get_opt(char *s, char *flag, int *tab)//recoit tab et flag car le main l
 	if (*s == '.')
 	{
 		if (*(s + 1) == '-')
-			return (ERROR);
+			return (0);//ERROR
 		if ('0' <= *(s + 1) && *(s + 1) <= '9')
 		{
 			tab[1] = ft_atoi(s + 1);
@@ -98,8 +98,8 @@ int		ft_get_opt(char *s, char *flag, int *tab)//recoit tab et flag car le main l
 			s++;
 	}//attention ! difference entre pas de precision et precision = 0 si pas prec : tab[1] == -1
 	else
-		tab[1] == -1;
+		tab[1] = -1;
 	if (!ft_get_last_char(&s, flag))
-		return (ERROR);
+		return (0);//ERROR
 	return (final_check(flag));
 }
