@@ -64,6 +64,14 @@ void	putwstr(wchar_t *lol)
 	while (lol[i])
 	{
 		ft_putwchar(lol[i]);
+/*		if (str[i] <= 0x7F)
+			ct -= 1;
+		else if (str[i] <= 0x7FF)
+			ct -= 2;
+		else if (str[i] <= 0xFFFF)
+			ct -= 3;
+		else // (str[i] <= 0x1FFFFF)
+			ct -=4;*/
 		i++;
 	}
 }
@@ -83,12 +91,12 @@ int		main()
 	putwstr(L"宜しく/どうぞ宜しく/どうぞ宜しくお願いします。\n");
 	putwstr(L"Ευχαριστώ για την βοήθεια\n");
 	putwstr(L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ\n");
+	printf("%d ====RETOUR FONCTION PRINTF\n", printf("%ls", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ\n"));
 	printf("%p\n", l);
 	printf("%22p\n", l);
 	printf("%d ======= STRLEN\n", ft_wstrlen(L"宜しく/ど"));
 	printf("%d = strlen &RETOUR FONCTION == %d \n", ft_wstrlen(L"宜しく/ど"), printf("%ls", L"宜しく/ど"));
-	printf("lol");
-	printf("tema mon char ==> %.4c", 'c');
+	printf("%#0.12x\n", 12345);
 	return (0);
 }
 

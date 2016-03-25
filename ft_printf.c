@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 15:13:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/24 12:11:17 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/25 10:43:56 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_clear_all(int *tab, char *flag, s_data s)
 	while (++i < 5)
 		flag[i] = 0;
 	s.s = NULL;
+	s.c = 0;
 	s.s_spe = NULL;
 	s.c_spe = 0;
 }

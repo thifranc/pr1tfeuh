@@ -6,9 +6,11 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 17:57:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/24 17:39:56 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/25 12:45:53 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//RESTE PROBLEME DE RETOUR DE FONCTION CF MAIN_TEST SINON TOUT ROULE
 
 #include "libftprintf.h"
 
@@ -18,19 +20,18 @@ void	do_wrd(char *flag, int *tab, s_data s)
 
 	max_char = get_max_char(s, tab);
 	if (!flag[1])
-		ft_print_n_char('0', tab[0] - max_char);
+		ft_print_n_char(' ', tab[0] - max_char);
 	if (s.c_spe)//gerer debut de arg
 		ft_putwchar(s.c_spe);
 	else if (s.s_spe)
-		ft_putwstr(s.s_spe);
+		ft_putwstr(s.s_spe, max_char);
 	else if (s.s)
-		ft_putstr(s.s);
+		ft_putstr(s.s, max_char);
 	else // (s.c)
 		ft_putchar(s.c);
-	tab[3] += max_char;//modifier appels fonctions;
+	tab[3] += max_char > tab[0] ? max_char : tab[0];//modifier appels fonctions;
 	if (flag[1] == '-')
-		ft_print_n_char('0', tab[0] - max_char);
-
+		ft_print_n_char(' ', tab[0] - max_char);
 }
 
 int		get_max_char(s_data s, int *tab)
@@ -39,11 +40,11 @@ int		get_max_char(s_data s, int *tab)
 
 	max_char = 0;
 	if (s.s)
-		max_char = (ft_strlen(s.s) > tab[1] ? tab[1] : ft_strlen(s.s));
-	if (s.s_spe)
-		max_char = (ft_wstrlen(s.s_spe) > tab[1] ? tab[1] : ft_wstrlen(s.s_spe));
-	if (s.c)
-		max_char = (1 > tab[1] ? tab[1] : 1);
+		max_char = ft_strlen(s.s);
+	else if (s.s_spe)
+		max_char = ft_wstrlen(s.s_spe);
+	else if (s.c)
+		max_char = 1;
 	else //(s.c_spe)
 	{
 		if (s.c_spe <= 0x7F)
@@ -55,7 +56,10 @@ int		get_max_char(s_data s, int *tab)
 		else
 			max_char = 4;
 	}
-	return (max_char);
+	if (tab[1] >= 0)
+		return (max_char > tab[1] ? tab[1] : max_char);
+	else
+		return (max_char);
 }
 
 int		ft_wstrlen(wchar_t *str)
@@ -77,17 +81,27 @@ int		ft_wstrlen(wchar_t *str)
 			ct += 4;
 		i++;
 	}
+	printf("%d == length\n", ct);
 	return (ct);
 }
 
-void	ft_putwstr(wchar_t *str)
+void	ft_putwstr(wchar_t *str, int ct)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str[i] && ct > 0)
 	{
-		ft_putwchar(str[i]);
+		if (str[i] <= 0x7F)
+			ct -= 1;
+		else if (str[i] <= 0x7FF)
+			ct -= 2;
+		else if (str[i] <= 0xFFFF)
+			ct -= 3;
+		else // (str[i] <= 0x1FFFFF)
+			ct -= 4;
+		if (ct > 0)
+			ft_putwchar(str[i]);
 		i++;
 	}
 }
@@ -110,7 +124,7 @@ void	ft_putwchar(wchar_t c)
 		mask = 256 - ft_power(2, (7 - max));
 		cpy = (cpy >> (max * 6) | mask);
 		write(1, &cpy, 1);
-		while (max)
+		while (max)//remplacer par --(max + 1)?
 		{
 			cpy = (int)c >> (6 * (max - 1));
 			cpy = (cpy & 63) | 128;

@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 10:07:41 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/24 17:40:00 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/25 15:02:02 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_data
 
 int					ft_wstrlen(wchar_t *str);
 int					get_max_char(s_data s, int *tab);
-char				*ft_get_code(int base);
+void				ft_get_code(int base, long long int arg);
 int					ft_get_first_char(char **s, char *flag);
 int					ft_power(int n, int puiss);
 int					ft_strcount(const char *s, char b);
@@ -37,14 +37,14 @@ int					ft_strlen_char(const char *s, char b);
 void				ft_putnb_base(int nb, char *base);
 int					ft_nb_len_base(long long int n, int base);
 int					ft_get_opt(char *s, char *flag, int *tab);
-int					final_check(char *flag);
+int					final_check(char *flag, int *tab);
 int					ft_get_last_char(char **s, char *flag);
 long long int		get_int_flagged(va_list va, char c, char d);
 void				get_arg(va_list va, char *flag, int *tab, s_data s);
 long long int		get_arg_nb(va_list va, char c, char *flag);
 long long int		get_uint_flagged(va_list va, char c, char d);
 void				ft_putwchar(wchar_t c);
-void				ft_putwstr(wchar_t *str);
+void				ft_putwstr(wchar_t *str, int n);
 void				do_wrd(char *flag, int *tab, s_data s);
 void				do_nb(char *flag, int *tab, long long int arg);
 void				print_beg(char *flag, int *tab, int max_char, long long int arg);
@@ -64,7 +64,7 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr(int n);
 void				ft_putnb_base(int n, char *base);
 void				ft_putnbr_fd(int n, int fd);
-void				ft_putstr(char const *s);
+void				ft_putstr(char const *s, int n);
 void				ft_putstr_fd(char const *s, int fd);
 char				*ft_strcat(char *s1, const char *s2);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
