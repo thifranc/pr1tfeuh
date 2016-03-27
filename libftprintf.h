@@ -18,6 +18,9 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdarg.h>
+# include <wchar.h>
+# include <locale.h>
+# include <limits.h>
 
 typedef struct s_data
 {
@@ -27,6 +30,7 @@ typedef struct s_data
 	const char		*s;
 }					s_data;
 
+int					ft_printf(char *str, ...);
 int					ft_wstrlen(wchar_t *str);
 int					get_max_char(s_data s, int *tab);
 void				ft_get_code(int base, long long int arg);
@@ -36,7 +40,7 @@ int					ft_strcount(const char *s, char b);
 int					ft_strlen_char(const char *s, char b);
 void				ft_putnb_base(int nb, char *base);
 int					ft_nb_len_base(long long int n, int base);
-int					ft_get_opt(char *s, char *flag, int *tab);
+int					ft_get_opt(char **s, char *flag, int *tab);
 int					final_check(char *flag, int *tab);
 int					ft_get_last_char(char **s, char *flag);
 long long int		get_int_flagged(va_list va, char c, char d);

@@ -12,11 +12,6 @@
 //CETTE PAGE EST AVLIDEE POUR LA PLUPART DES CAS MAIS PEUT ETRE PAS 100% DES CAS FURENT TESTES
 #include "libftprintf.h"
 
-/*
- *RESTE A FAIRE
-les cas d'erreurs
- * */
-
 int		get_total_char(long long int arg, char *flag, int *tab)
 {
 	int		tmp;

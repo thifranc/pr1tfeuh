@@ -24,7 +24,7 @@ FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME):
-	gcc $(FLAGS) -c $(SRCS)
+	gcc -c $(SRCS)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	make clean

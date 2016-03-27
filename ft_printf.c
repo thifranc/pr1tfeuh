@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+//REVOIR FT CLEAR ALL QUI NE FONCITONNE PAS
+//ET RETURN DE FT CF COMM DO_WRD
 
 void	ft_clear_all(int *tab, char *flag, s_data s)
 {
@@ -60,14 +62,14 @@ int		ft_printf(char *str, ...)
 		tab[3] += ft_strcount(str, '%');
 		str += ft_strlen_char(str, '%');
 		ft_clear_all(tab, f, s);//structure a clearer | attention appel function avec & ou non ?
-		if (*(str + 1) == '%')
+		if (*str && *(str + 1) == '%')
 		{
 			tab[3] += ft_strcount("%", '\0');
 			str += 2;
 		}
-		else
+		else if (*str && *(str + 1) != '%')
 		{
-			ft_get_opt(str, f, tab);
+			ft_get_opt(&str, f, tab);
 			get_arg(va, f, tab, s);
 		}
 	}

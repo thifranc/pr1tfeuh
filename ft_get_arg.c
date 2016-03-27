@@ -25,7 +25,7 @@ long long int	get_int_flagged(va_list va, char c, char d)
 	else if (c == 'L')
 		out = va_arg(va, long long);
 	else if (c == 'j')
-		out = va_arg(va, intmax_t);
+		out = va_arg(va, int);
 	else // (c == 'z')
 		out = va_arg(va, ssize_t);//+-= signed size_t
 	return (out);
@@ -45,7 +45,7 @@ long long int	get_uint_flagged(va_list va, char c, char d)
 	else if (c == 'L')
 		out = va_arg(va, unsigned long long);
 	else if (c == 'j')
-		out = va_arg(va, uintmax_t);
+		out = va_arg(va, unsigned int);
 	else // (c == 'z')
 		out = va_arg(va, size_t);
 	return (out);
@@ -77,6 +77,8 @@ void			get_arg(va_list va, char *flag, int *tab, s_data s)
 	long long int	lli;
 
 	lli = 0;
+	if (!flag[4])
+		return ;
 	if (flag[4] == 'C' || (flag[3] == 'l' && flag[4] == 'c'))
 		s.c_spe = va_arg(va, wchar_t);
 	else if (flag[4] == 's' && flag[3] != 'l')
@@ -94,7 +96,11 @@ void			get_arg(va_list va, char *flag, int *tab, s_data s)
 	}//code utile pr print beg
 	//gerer ensuite appel de fonction en fonction du flag;
 	if (lli)
+	{
 		do_nb(flag, tab, lli);//pb passer flag + tab d'int => struct ?
+	}
 	else
+	{
 		do_wrd(flag, tab, s);
+	}
 }

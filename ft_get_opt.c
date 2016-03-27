@@ -32,7 +32,7 @@ int		ft_error(int flag)
 		printf("lol t'as voulu jouer ton malin avec une precision negative et bah ca degage !");
 	if (flag == 7)
 		printf("pas de doublons ds les flags steuplait. al la limite hh et ll j'accepte mais c'est tout");
-	return (0);
+	exit(-1);
 }
 
 int		final_check(char *flag, int *tab)
@@ -42,7 +42,11 @@ int		final_check(char *flag, int *tab)
 	if (flag[0] == '#' && ft_get_char("xXoO", flag[4]) == -1)
 		return (ft_error(2));
 	if (ft_get_char("hHjz", flag[3]) != -1 && ft_get_char("psScC", flag[4]) != -1)
+	{
+		printf("%d = retour get char hHjz && %d retour autre ft\n", ft_get_char("hHjz", flag[3]), ft_get_char("psScC", flag[4]));
+		printf ("%c == flag[3] &&&& %c === flag[4]\n", flag[3], flag[4]);
 		return (ft_error(3));
+	}
 	if (ft_get_char("sScCpouxOUX", flag[4]) != -1 && (flag[2] == ' ' || flag[2] == '+'))//if flag[2] existe
 		return (0);
 	if ((flag[4] == 'c' || flag[4] == 'C') && tab[1] != -1)
@@ -77,7 +81,6 @@ int		ft_get_first_char(char **s, char *flag)
 
 int		ft_get_last_char(char **s, char *flag)
 {
-	printf("last current char == %c\n", **s);
 	while (**s && ft_get_char("hjzl", **s) != -1)
 	{
 		if (ft_get_char("hjzl", **s) != -1 && flag[3])
@@ -95,31 +98,32 @@ int		ft_get_last_char(char **s, char *flag)
 	return (1);
 }
 
-int		ft_get_opt(char *s, char *flag, int *tab)//recoit tab et flag car le main les clear
+int		ft_get_opt(char **s, char *flag, int *tab)//recoit tab et flag car le main les clear
 {
-	printf("JJJJJJJJJJJJJJJEEEEEEEEEEEEEEEEEEEEEEEE T  AAIIIIIIIIIIIMMMMMMMMMMMEEEEEEEEEEEE\n");
-	if (!ft_get_first_char(&s, flag))
+	(*s)++;
+	if (!ft_get_first_char(s, flag))
 		return (0);
-	if ('1' <= *s && *s <= '9')
+	if ('1' <= **s && **s <= '9')
 	{
-		tab[0] = ft_atoi(s);
-		s += ft_nb_len_base(tab[0], 10);
+		tab[0] = ft_atoi(*s);
+		*s += ft_nb_len_base(tab[0], 10);
 	}
-	if (*s == '.')
+	if (**s == '.')
 	{
-		if (*(s + 1) == '-')
+		if (**(s + 1) == '-')
 			return (ft_error(6));
-		if ('0' <= *(s + 1) && *(s + 1) <= '9')
+		if ('0' <= **(s + 1) && **(s + 1) <= '9')
 		{
-			tab[1] = ft_atoi(s + 1);
-			s += ft_nb_len_base(tab[1], 10) + 1;
+			tab[1] = ft_atoi(*(s + 1));
+			*s += ft_nb_len_base(tab[1], 10) + 1;
 		}
 		else
-			s++;
+			*s++;
 	}//attention ! difference entre pas de precision et precision = 0 si pas prec : tab[1] == -1
 	else
 		tab[1] = -1;
-	if (!ft_get_last_char(&s, flag))
+	if (!ft_get_last_char(s, flag))
 		return (0);
+	(*s)++;
 	return (final_check(flag, tab));
 }

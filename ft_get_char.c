@@ -21,7 +21,7 @@ int		ft_get_char(char *s, char c)
 		return (-1);
 	while (s[i] && s[i] != c)
 		i++;
-	if (s[i] == c)
+	if (s[i] == c && s[i] != 0)
 		return (i);
 	return (-1);
 }
