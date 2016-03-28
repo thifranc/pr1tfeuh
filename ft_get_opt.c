@@ -6,13 +6,13 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 17:13:25 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 18:02:51 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_error(int flag, char *f)
+void	ft_error(int flag, char *f)
 {
 	printf("ERROR CALLED for f == %c|%c|%c|%c|%c\n", f[0], f[1], f[2], f[3], f[4]);
 	if (flag == 0)
@@ -34,36 +34,35 @@ int		ft_error(int flag, char *f)
 	exit(-1);
 }
 
-int		final_check(char *flag, int *tab)
+void	final_check(char *flag, int *tab)
 {
 	if ((flag[2] == '-' || flag[2] == '+') && ft_get_char("DIdi", flag[4]) == -1)
-		return (ft_error(1, flag));
+		ft_error(1, flag);
 	if (flag[0] == '#' && ft_get_char("xXoO", flag[4]) == -1)
-		return (ft_error(2, flag));
+		ft_error(2, flag);
 	if (ft_get_char("hHjz", flag[3]) != -1 && ft_get_char("psScC", flag[4]) != -1)
 	{
 		printf("%d = retour get char hHjz && %d retour autre ft\n", ft_get_char("hHjz", flag[3]), ft_get_char("psScC", flag[4]));
 		printf("%c == flag[3] &&&& %c === flag[4]\n", flag[3], flag[4]);
-		return (ft_error(3, flag));
+		ft_error(3, flag);
 	}
-	if (ft_get_char("sScCpouxOUX", flag[4]) != -1 && flag[2])
-		return (0);
+	//if (ft_get_char("sScCpouxOUX", flag[4]) != -1 && flag[2])
+	//	return (0);
 	if ((flag[4] == 'c' || flag[4] == 'C') && tab[1] != -1)
-		return (ft_error(4, flag));
+		ft_error(4, flag);
 	if (flag[1] == '0' && (ft_get_char("psScC", flag[4]) != -1))
-		return (ft_error(5, flag));
-	return (1);
+		ft_error(5, flag);
 }
 
-int		ft_get_first_char(char **s, char *flag)
+void	ft_get_first_char(char **s, char *flag)
 {
 	while (**s && ft_get_char("#+- 0", **s) != -1)
 	{
 		if (**s == '#')
 			flag[0] = '#';
 		if ((**s == '0' && flag[1] == '-') || (**s == '-' && flag[1] == '0')
-				|| (**s == '+' && flag[2] == ' ') || (**s == ' ' && flag[2] == '+'))
-			return (ft_error(0, flag));
+		|| (**s == '+' && flag[2] == ' ') || (**s == ' ' && flag[2] == '+'))
+			ft_error(0, flag);
 		if (**s == '0' && flag[1] != '-')
 			flag[1] = **s;
 		if (**s == '-' && flag[1] != '0')
@@ -74,15 +73,14 @@ int		ft_get_first_char(char **s, char *flag)
 			flag[2] = **s;
 		(*s)++;
 	}
-	return (1);
 }
 
-int		ft_get_last_char(char **s, char *flag)
+void	ft_get_last_char(char **s, char *flag)
 {
 	while (**s && ft_get_char("hjzl", **s) != -1)
 	{
 		if (ft_get_char("hjzl", **s) != -1 && flag[3])
-			return (ft_error(7, flag));
+			ft_error(7, flag);
 		if (**s == *(*s + 1) && (**s == 'h' || **s == 'l'))
 		{
 			flag[3] = **s - 32;
@@ -93,13 +91,12 @@ int		ft_get_last_char(char **s, char *flag)
 		(*s)++;
 	}
 	flag[4] = **s;
-	return (1);
 }
 
-int		ft_get_opt(char **s, char *flag, int *tab)
+void	ft_get_opt(char **s, char *flag, int *tab)
 {
-	if (!ft_get_first_char(s, flag))
-		return (0);
+	(*s)++;
+	ft_get_first_char(s, flag);
 	if ('1' <= **s && **s <= '9')
 	{
 		tab[0] = ft_atoi(*s);
@@ -108,7 +105,7 @@ int		ft_get_opt(char **s, char *flag, int *tab)
 	if (**s == '.')
 	{
 		if (*((*s) + 1) == '-')
-			return (ft_error(6, flag));
+			ft_error(6, flag);
 		if ('0' <= *((*s) + 1) && *((*s) + 1) <= '9')
 		{
 			tab[1] = ft_atoi(*(s) + 1);
@@ -119,8 +116,7 @@ int		ft_get_opt(char **s, char *flag, int *tab)
 	}
 	else
 		tab[1] = -1;
-	if (!ft_get_last_char(s, flag))
-		return (0);
+	ft_get_last_char(s, flag);
 	(*s)++;
-	return (final_check(flag, tab));
+	final_check(flag, tab);
 }

@@ -6,11 +6,12 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 15:13:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 17:17:18 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 18:01:14 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
 //REVOIR FT CLEAR ALL FONCITONNE
 //ET RETURN DE FT CF COMM DO_WRD
 
@@ -67,12 +68,10 @@ int		ft_printf(char *str, ...)
 		}
 		else if (*str && *(str + 1) != '%')
 		{
-			str++;
 			ft_get_opt(&str, f, tab);
 			get_arg(va, f, tab, s);
 		}
 	}
 	va_end(va);
-	//printf("retour fontiocn == %d", tab[3]);
 	return (tab[3]);
 }

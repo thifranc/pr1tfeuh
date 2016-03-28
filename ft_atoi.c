@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 11:52:58 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/25 09:37:27 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 17:50:22 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 int		ft_atoi(char *str)
 {
-	int i;
 	int flag;
 	int nb;
 	int tmp;
 
-	i = 0;
 	nb = 0;
 	flag = 0;
-	while (str[i] && (str[i] == '\t' || str[i] == '\n' || str[i] == ' '
-			|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r'))
-		i++;
-	if (str[i] == '-')
+	while (*str && (*str == '\t' || *str == '\n' || *str == ' '
+			|| *str == '\v' || *str == '\f' || *str == '\r'))
+		str++;
+	if (*str == '-')
 		flag = 1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while ('0' <= str[i] && str[i] <= '9' && str[i])
+	if (*str == '-' || *str == '+')
+		str++;
+	while ('0' <= *str && *str <= '9' && *str)
 	{
-		tmp = str[i] - 48;
+		tmp = *str - 48;
 		nb = nb * 10 + tmp;
-		i++;
+		str++;
 	}
 	if (flag == 1)
 		nb = -nb;

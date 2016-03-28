@@ -6,28 +6,28 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 09:03:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 17:40:44 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 18:02:30 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		get_total_char(long long int arg, char *flag, int *tab)
+int		get_total_char(long long int arg, char *f, int *tab)
 {
 	int		tmp;
 	int		len;
 
-	if (flag[4] == 'x' || flag[4] == 'X' || flag[4] == 'p')
+	if (f[4] == 'x' || f[4] == 'X' || f[4] == 'p')
 		tab[2] = 16;
-	else if (flag[4] == 'o')
+	else if (f[4] == 'o')
 		tab[2] = 8;
 	else
 		tab[2] = 10;
 	len = ft_nb_len_base(arg, tab[2]);
 	tmp = len > tab[1] ? len : tab[1];
-	if ((flag[0] == '#' && (flag[4] == 'o' || flag[4] == 'O')) || flag[2] != '\0')
+	if ((f[0] == '#' && (f[4] == 'o' || f[4] == 'O')) || f[2] != '\0')
 		tmp++;
-	if ((flag[0] == '#' && (flag[4] == 'x' || flag[4] == 'X')) || flag[4] == 'p')
+	if ((f[0] == '#' && (f[4] == 'x' || f[4] == 'X')) || f[4] == 'p')
 		tmp += 2;
 	return (tmp);
 }

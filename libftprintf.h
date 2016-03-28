@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 10:07:41 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 16:13:09 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 17:57:54 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ int					ft_printf(char *str, ...);
 int					ft_wstrlen(wchar_t *str);
 int					get_max_char(s_data s, int *tab);
 void				ft_get_code(int base, long long int arg);
-int					ft_get_first_char(char **s, char *flag);
+void				ft_get_first_char(char **s, char *flag);
 int					ft_power(int n, int puiss);
 int					ft_strcount(const char *s, char b);
 int					ft_strlen_char(const char *s, char b);
 void				ft_putnb_base(long long int nb, char *base);
 int					ft_nb_len_base(long long int n, int base);
-int					ft_get_opt(char **s, char *flag, int *tab);
-int					final_check(char *flag, int *tab);
-int					ft_get_last_char(char **s, char *flag);
+void				ft_get_opt(char **s, char *flag, int *tab);
+void				final_check(char *flag, int *tab);
+void				ft_get_last_char(char **s, char *flag);
 long long int		get_int_flagged(va_list va, char c, char d);
 void				get_arg(va_list va, char *flag, int *tab, s_data s);
 long long int		get_arg_nb(va_list va, char c, char *flag);
