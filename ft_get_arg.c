@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:02:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 17:35:49 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 19:40:46 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ long long int	get_int_flagged(va_list va, char c, char d)
 	else if (c == 'L')
 		out = va_arg(va, long long);
 	else if (c == 'j')
-		out = va_arg(va, int);
+		out = va_arg(va, intmax_t);
 	else // (c == 'z')
 		out = va_arg(va, ssize_t);//+-= signed size_t
 	return (out);
@@ -45,7 +45,7 @@ long long int	get_uint_flagged(va_list va, char c, char d)
 	else if (c == 'L')
 		out = va_arg(va, unsigned long long);
 	else if (c == 'j')
-		out = va_arg(va, unsigned int);
+		out = va_arg(va, uintmax_t);
 	else // (c == 'z')
 		out = va_arg(va, size_t);
 	return (out);
@@ -55,7 +55,7 @@ long long int	get_arg_nb(va_list va, char c, char *flag)
 {
 	long long int	out;
 
-	if (flag[3] || ft_get_char("DIOUX", flag[4]) != -1)
+	if (flag[3] || ft_get_char("DIOU", flag[4]) != -1)
 	{
 		if (ft_get_char("ouxOUX", c) != -1)
 			out = get_uint_flagged(va, flag[3], flag[4]);
@@ -64,8 +64,10 @@ long long int	get_arg_nb(va_list va, char c, char *flag)
 	}
 	else
 	{
-		if (ft_get_char("diouX", c) != -1)
+		if (ft_get_char("di", c) != -1)
 			out = va_arg(va, int);
+		else if (ft_get_char("ouxX", c) != -1)
+			out = va_arg(va, unsigned int);
 		else //(c == 'p')
 			out = va_arg(va, long long);//puis printf hexa prefixe de 0x
 	}
