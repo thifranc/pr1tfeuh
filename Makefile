@@ -6,14 +6,14 @@
 #    By: thifranc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/04 19:24:34 by thifranc          #+#    #+#              #
-#    Updated: 2016/03/25 10:52:37 by thifranc         ###   ########.fr        #
+#    Updated: 2016/03/28 13:45:07 by thifranc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 SRCS = do_nb do_wrd get_char printf get_arg get_opt atoi nb_len_base power\
-	   print_n_char putnb_base putchar putstr strlen strdup strcpy
+	   print_n_char putnb_base putchar putstr strlen strdup strcpy higher
 
 SRCS:= $(addsuffix .c, $(SRCS))
 SRCS:= $(addprefix ft_, $(SRCS))

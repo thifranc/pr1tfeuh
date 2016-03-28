@@ -6,12 +6,12 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 15:13:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/25 10:43:56 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 14:07:22 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-//REVOIR FT CLEAR ALL QUI NE FONCITONNE PAS
+//REVOIR FT CLEAR ALL FONCITONNE
 //ET RETURN DE FT CF COMM DO_WRD
 
 void	ft_clear_all(int *tab, char *flag, s_data s)
@@ -54,9 +54,6 @@ int		ft_printf(char *str, ...)
 	va_list		va;
 
 	va_start(va, str);
-	s.c_spe = 0;
-	s.s_spe = 0;
-	s.s = 0;
 	while (*str)
 	{
 		tab[3] += ft_strcount(str, '%');
@@ -69,6 +66,7 @@ int		ft_printf(char *str, ...)
 		}
 		else if (*str && *(str + 1) != '%')
 		{
+			str++;
 			ft_get_opt(&str, f, tab);
 			get_arg(va, f, tab, s);
 		}

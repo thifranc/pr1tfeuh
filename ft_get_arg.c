@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:02:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/24 17:13:55 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 13:52:46 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,8 @@ void			get_arg(va_list va, char *flag, int *tab, s_data s)
 		flag[2] = '-';
 		lli = -lli;
 	}//code utile pr print beg
-	//gerer ensuite appel de fonction en fonction du flag;
 	if (lli)
-	{
 		do_nb(flag, tab, lli);//pb passer flag + tab d'int => struct ?
-	}
 	else
-	{
 		do_wrd(flag, tab, s);
-	}
 }

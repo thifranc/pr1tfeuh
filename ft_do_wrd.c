@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 17:57:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/25 12:45:53 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 13:52:58 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	ft_putwchar(wchar_t c)
 	len = ft_nb_len_base(cpy, 2);
 	if (len <= 7)
 		write(1, &c, 1);//pb si char == 200 nan c bon y a unicode pas ascii
-	else 
+	else
 	{
 		max = len > 11 ? 2 : 1;
 		max += len > 16 ? 1 : 0;
