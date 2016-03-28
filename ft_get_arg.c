@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:02:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 16:14:43 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 17:35:49 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ long long int	get_int_flagged(va_list va, char c, char d)
 	long long int	out;
 
 	if (c == 'H')
-		out = va_arg(va, int);//auto promoted
+		out = (signed char)va_arg(va, int);//auto promoted
 	else if (c == 'h')
-		out = va_arg(va, int);
+		out = (short)va_arg(va, int);
 	else if (c == 'l' || ('A' <= d && d <= 'Z'))
 		out = va_arg(va, unsigned long);
 	else if (c == 'L')
@@ -37,9 +37,9 @@ long long int	get_uint_flagged(va_list va, char c, char d)
 
 	out = 0;
 	if (c == 'H')
-		out = va_arg(va, unsigned int);
+		out = (unsigned char)va_arg(va, unsigned int);
 	else if (c == 'h')
-		out = va_arg(va, unsigned int);
+		out = (unsigned short)va_arg(va, unsigned int);
 	else if (c == 'l' || ('A' <= d && d <= 'Z'))
 		out = va_arg(va, unsigned long);
 	else if (c == 'L')
@@ -77,8 +77,6 @@ void			get_arg(va_list va, char *flag, int *tab, s_data s)
 	long long int	lli;
 
 	lli = 0;
-	if (!flag[4])
-		return ;
 	if (flag[4] == 'C' || (flag[3] == 'l' && flag[4] == 'c'))
 		s.c_spe = va_arg(va, wchar_t);
 	else if (flag[4] == 's' && flag[3] != 'l')
@@ -94,7 +92,7 @@ void			get_arg(va_list va, char *flag, int *tab, s_data s)
 		flag[2] = '-';
 		lli = -lli;
 	}
-	if (lli)
+	if (ft_get_char("pdiouxDIOUX", flag[4]) != -1)
 		do_nb(flag, tab, lli);
 	else
 		do_wrd(flag, tab, s);

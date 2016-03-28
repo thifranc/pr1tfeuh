@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 09:03:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 17:00:00 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 17:40:44 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int		get_total_char(long long int arg, char *flag, int *tab)
 	int		tmp;
 	int		len;
 
-	printf("flag = %c|%c|%c|%c|%c|", flag[0], flag[1],flag[2],flag[3],flag[4]);
 	if (flag[4] == 'x' || flag[4] == 'X' || flag[4] == 'p')
 		tab[2] = 16;
 	else if (flag[4] == 'o')
@@ -41,6 +40,8 @@ void	print_beg(char *flag, int *tab, int max_char, long long int arg)
 		write(1, &flag[2], 1);
 	if ((flag[0] == '#' && (flag[4] == 'X' || flag[4] == 'x')) || flag[4] == 'p')
 		flag[4] == 'X' ? write(1, "0X", 2) : write(1, "0x", 2);
+	if (flag[0] == '#' && (flag[4] == 'o' || flag[4] == 'O'))
+		write(1, "0", 1);
 	if (flag[1] == '0' && tab[1] == -1)
 		ft_print_n_char('0', tab[0] - max_char);
 	ft_print_n_char('0', tab[1] - ft_nb_len_base(arg, tab[2]));

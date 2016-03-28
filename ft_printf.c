@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 15:13:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 14:07:22 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 17:17:18 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_clear_all(int *tab, char *flag, s_data s)
 	int		i;
 
 	i = -1;
-	while (++i < 4)
+	while (++i < 3)
 		tab[i] = 0;
 	i = -1;
 	while (++i < 5)
@@ -54,6 +54,7 @@ int		ft_printf(char *str, ...)
 	va_list		va;
 
 	va_start(va, str);
+	tab[3] = 0;
 	while (*str)
 	{
 		tab[3] += ft_strcount(str, '%');
@@ -72,5 +73,6 @@ int		ft_printf(char *str, ...)
 		}
 	}
 	va_end(va);
+	//printf("retour fontiocn == %d", tab[3]);
 	return (tab[3]);
 }

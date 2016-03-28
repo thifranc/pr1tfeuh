@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 17:04:53 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 17:13:25 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ int		ft_get_opt(char **s, char *flag, int *tab)
 		tab[0] = ft_atoi(*s);
 		*s += ft_nb_len_base(tab[0], 10);
 	}
-	printf("%c = la ou jsuis |||| %d = atoi\n", **s, tab[0]);
 	if (**s == '.')
 	{
 		if (*((*s) + 1) == '-')

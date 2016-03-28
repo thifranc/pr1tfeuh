@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 17:57:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 16:47:01 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 17:28:53 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ void	do_wrd(char *flag, int *tab, s_data s)
 	max_char = get_max_char(s, tab);
 	if (!flag[1])
 		ft_print_n_char(' ', tab[0] - max_char);
-	if (s.c_spe)//gerer debut de arg
-		ft_putwchar(s.c_spe);
-	else if (s.s_spe)
-		ft_putwstr(s.s_spe, max_char);
-	else if (s.s)
+	if (s.s != 0)
 		ft_putstr(s.s, max_char);
+	else if (s.c_spe != 0)//gerer debut de arg
+		ft_putwchar(s.c_spe);
+	else if (s.s_spe != 0)
+		ft_putwstr(s.s_spe, max_char);
 	else // (s.c)
 		ft_putchar(s.c);
 	tab[3] += max_char > tab[0] ? max_char : tab[0];//modifier appels fonctions;
