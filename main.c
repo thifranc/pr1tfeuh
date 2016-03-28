@@ -1,7 +1,7 @@
 #include "libftprintf.h"
 #include <wchar.h>
 #include <locale.h>
-
+//segfault if %s et arg = int
 int		main(void)
 {
 	/*char* l = setlocale(LC_ALL, "");
@@ -54,5 +54,7 @@ int		main(void)
 	printf("\033[32mref==>%lsfin\n\033[0m", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
 	printf("resultat de ma fonction : \n");
 	ft_printf("\033[33mmoi==>\033[0m%Sfin\n", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
+
+	ft_printf("%s", 12);
 	return (0);
 }
