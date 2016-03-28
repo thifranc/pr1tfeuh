@@ -6,13 +6,13 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 14:53:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/25 09:40:47 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 16:11:52 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putnb_base(int n, char *base)
+void	ft_putnb_base(long long int n, char *base)
 {
 	if (n < 0)
 	{

@@ -6,13 +6,11 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 14:07:20 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 17:04:53 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-//QUASI TOUT BON JUSTE A REVOIR BIEN TOUS LES CAS DE NON COMPILATION
 
 int		ft_error(int flag, char *f)
 {
@@ -48,7 +46,7 @@ int		final_check(char *flag, int *tab)
 		printf("%c == flag[3] &&&& %c === flag[4]\n", flag[3], flag[4]);
 		return (ft_error(3, flag));
 	}
-	if (ft_get_char("sScCpouxOUX", flag[4]) != -1 && (flag[2] == ' ' || flag[2] == '+'))//if flag[2] existe
+	if (ft_get_char("sScCpouxOUX", flag[4]) != -1 && flag[2])
 		return (0);
 	if ((flag[4] == 'c' || flag[4] == 'C') && tab[1] != -1)
 		return (ft_error(4, flag));
@@ -85,7 +83,7 @@ int		ft_get_last_char(char **s, char *flag)
 	{
 		if (ft_get_char("hjzl", **s) != -1 && flag[3])
 			return (ft_error(7, flag));
-		if (**s == *(*s + 1) && (**s == 'h' || **s == 'l'))//protection autre doublons
+		if (**s == *(*s + 1) && (**s == 'h' || **s == 'l'))
 		{
 			flag[3] = **s - 32;
 			(*s)++;
@@ -98,7 +96,7 @@ int		ft_get_last_char(char **s, char *flag)
 	return (1);
 }
 
-int		ft_get_opt(char **s, char *flag, int *tab)//recoit tab et flag car le main les clear
+int		ft_get_opt(char **s, char *flag, int *tab)
 {
 	if (!ft_get_first_char(s, flag))
 		return (0);
@@ -107,6 +105,7 @@ int		ft_get_opt(char **s, char *flag, int *tab)//recoit tab et flag car le main 
 		tab[0] = ft_atoi(*s);
 		*s += ft_nb_len_base(tab[0], 10);
 	}
+	printf("%c = la ou jsuis |||| %d = atoi\n", **s, tab[0]);
 	if (**s == '.')
 	{
 		if (*((*s) + 1) == '-')
@@ -118,7 +117,7 @@ int		ft_get_opt(char **s, char *flag, int *tab)//recoit tab et flag car le main 
 		}
 		else
 			(*s)++;
-	}//attention ! difference entre pas de precision et precision = 0 si pas prec : tab[1] == -1
+	}
 	else
 		tab[1] = -1;
 	if (!ft_get_last_char(s, flag))

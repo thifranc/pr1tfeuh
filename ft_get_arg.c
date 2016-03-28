@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:02:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 13:52:46 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 16:14:43 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ long long int	get_int_flagged(va_list va, char c, char d)
 	else if (c == 'h')
 		out = va_arg(va, int);
 	else if (c == 'l' || ('A' <= d && d <= 'Z'))
-		out = va_arg(va, long);
+		out = va_arg(va, unsigned long);
 	else if (c == 'L')
 		out = va_arg(va, long long);
 	else if (c == 'j')
@@ -93,9 +93,9 @@ void			get_arg(va_list va, char *flag, int *tab, s_data s)
 	{
 		flag[2] = '-';
 		lli = -lli;
-	}//code utile pr print beg
+	}
 	if (lli)
-		do_nb(flag, tab, lli);//pb passer flag + tab d'int => struct ?
+		do_nb(flag, tab, lli);
 	else
 		do_wrd(flag, tab, s);
 }

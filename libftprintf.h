@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 10:07:41 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 13:44:56 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/28 16:13:09 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int					ft_get_first_char(char **s, char *flag);
 int					ft_power(int n, int puiss);
 int					ft_strcount(const char *s, char b);
 int					ft_strlen_char(const char *s, char b);
-void				ft_putnb_base(int nb, char *base);
+void				ft_putnb_base(long long int nb, char *base);
 int					ft_nb_len_base(long long int n, int base);
 int					ft_get_opt(char **s, char *flag, int *tab);
 int					final_check(char *flag, int *tab);
@@ -66,9 +66,6 @@ void				ft_putchar(char c);
 void				ft_putchar_fd(char d, int fd);
 void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
-void				ft_putnbr(int n);
-void				ft_putnb_base(int n, char *base);
-void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr(char const *s, int n);
 void				ft_putstr_fd(char const *s, int fd);
 char				*ft_strcat(char *s1, const char *s2);
