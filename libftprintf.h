@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 10:07:41 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/29 17:20:05 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/29 19:53:20 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct		s_data
 
 int					ft_higher(int a, int b);
 int					ft_printf(char *str, ...);
-int					ft_wstrlen(wchar_t *str);
+int					ft_wstrlen(wchar_t *str, int max);
 int					get_max_char(t_data s, int *tab, char *flag);
 void				ft_get_code(int base, long long int arg);
 void				ft_get_first_char(char **s, char *flag);
