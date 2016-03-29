@@ -1,15 +1,16 @@
 #include "libftprintf.h"
 #include <wchar.h>
+#include <stdio.h>
 #include <locale.h>
 //segfault if %s et arg = int
 int		main(void)
 {
-	/*char* l = setlocale(LC_ALL, "");
+	char* l = setlocale(LC_ALL, "");
 	if (l == NULL)
 		printf("locale not set\n");
 	else
 		printf("set %s\n", l);
-		*/
+
 	char	*ptr;
 	char	lol;
 	unsigned long t;
@@ -53,13 +54,16 @@ int		main(void)
 	ft_printf("\033[33mmoi==>\033[0m%-23pfin\n", ptr);
 
 	//test option max string
-//	printf("\n nouveau test\n\n");
-//	printf("\033[32mref==>%lsfin\n\033[0m", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
-//	printf("resultat de ma fonction : \n");
-//	ft_printf("\033[33mmoi==>\033[0m%Sfin\n", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
+	printf("\n nouveau test\n\n");
+	printf("\033[32mref==>%.22lsfin\n\033[0m", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
+	printf("resultat de ma fonction : \n");
+	ft_printf("\033[33mmoi==>\033[0m%.22Sfin\n", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
 
-	ft_printf("%lu\n", -42);
-	printf("%lu\n", t);
-	ft_printf("%s", NULL);
+	//retour ft
+	printf("\n nouveau test\n\n");
+	printf("ret ft ==>%d\n", printf("%.23ls", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ"));
+	printf("resultat de ma fonction : \n");
+	ft_printf("\033[33mmoi==>\033[0m%.23Sfin", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
+	
 	return (0);
 }
