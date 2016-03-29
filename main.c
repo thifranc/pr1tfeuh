@@ -65,5 +65,11 @@ int		main(void)
 	printf("resultat de ma fonction : \n");
 	ft_printf("\033[33mmoi==>\033[0m%.23Sfin", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
 	
+	//test conv unsigned
+	printf("\n nouveau test\n\n");
+	printf("\033[32mref==>%ufin\n\033[0m", (unsigned)-42);
+	printf("resultat de ma fonction : \n");
+	ft_printf("\033[33mmoi==>\033[0m%ufin\n", -42);
+	ft_printf("\033[33mmoi==>\033[0m%ufin\n", t);
 	return (0);
 }
