@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 14:53:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 16:11:52 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/29 17:09:25 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putnb_base(long long int n, char *base)
 		ft_putchar('-');
 		ft_putnb_base(-n, base);
 	}
-	else if (0 <= n && n <= ft_strlen(base))
+	else if (0 <= n && n < ft_strlen(base))
 		ft_putchar(base[n]);
 	else
 	{
