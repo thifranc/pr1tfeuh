@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:02:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/29 17:20:43 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/29 20:24:51 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ long long int	get_int_flagged(va_list va, char c, char d)
 
 	if (c == 'H')
 		out = (signed char)va_arg(va, int);//auto promoted
+	else if (c == 'l' || ('A' <= d && d <= 'Z'))
+		out = va_arg(va, long);
 	else if (c == 'h')
 		out = (short)va_arg(va, int);
-	else if (c == 'l' || ('A' <= d && d <= 'Z'))
-		out = va_arg(va, unsigned long);
 	else if (c == 'L')
 		out = va_arg(va, long long);
 	else if (c == 'j')
@@ -38,17 +38,17 @@ long long int	get_uint_flagged(va_list va, char c, char d)
 	out = 0;
 	if (c == 'H')
 		out = (unsigned char)va_arg(va, unsigned int);
+	else if (c == 'l' || ('A' <= d && d <= 'Z'))
+		out = va_arg(va, unsigned long);
 	else if (c == 'h')
 		out = (unsigned short)va_arg(va, unsigned int);
-	else if (c == 'l' || ('A' <= d && d <= 'Z'))
-		out = (unsigned long)va_arg(va, unsigned long);
 	else if (c == 'L')
 		out = va_arg(va, unsigned long long);
 	else if (c == 'j')
 		out = va_arg(va, uintmax_t);
 	else // (c == 'z')
 		out = va_arg(va, size_t);
-	return (out);
+	return ((unsigned long long)out);
 }
 
 long long int	get_arg_nb(va_list va, char c, char *flag)
@@ -71,6 +71,7 @@ long long int	get_arg_nb(va_list va, char c, char *flag)
 		else //(c == 'p')
 			out = va_arg(va, long long);//puis printf hexa prefixe de 0x
 	}
+	//printf("out vaut ca = %lli\n", out);
 	return (out);
 }
 

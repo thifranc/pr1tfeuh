@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/29 15:56:35 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/29 20:20:52 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	final_check(char *flag, int *tab)
 		ft_error(2, flag);
 	if (ft_get_char("hHjz", flag[3]) != -1 && ft_get_char("psScC", flag[4]) != -1)
 		ft_error(3, flag);
-	//if (ft_get_char("sScCpouxOUX", flag[4]) != -1 && flag[2])
-	//	return (0);
 	if ((flag[4] == 'c' || flag[4] == 'C') && tab[1] != -1)
 		ft_error(4, flag);
 	if (flag[1] == '0' && (ft_get_char("psScC", flag[4]) != -1))
