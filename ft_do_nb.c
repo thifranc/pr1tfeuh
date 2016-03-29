@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 09:03:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 20:00:14 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/29 15:49:46 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		get_total_char(long long int arg, char *f, int *tab)
 		tmp++;
 	if ((f[0] == '#' && (f[4] == 'x' || f[4] == 'X')) || f[4] == 'p')
 		tmp += 2;
+	if (!arg && !tab[1])
+		tmp--;
 	return (tmp);
 }
 
@@ -51,12 +53,15 @@ void	do_nb(char *flag, int *tab, long long int arg)
 {
 	int		max_char;
 
+	if (!arg && flag[4] != 'o' && flag[4] != 'O')
+		flag[0] = 0;
 	max_char = get_total_char(arg, flag, tab);
 	tab[3] += ft_higher(max_char, ft_higher(tab[0], tab[1]));//higher of 3
 	print_beg(flag, tab, max_char, arg);
 	if (tab[2] == 16 && flag[4] == 'X')
 		tab[2] = 1;
-	ft_get_code(tab[2], arg);
+	if (arg || tab[1])
+		ft_get_code(tab[2], arg);//go tnt que y a pas arg = 0 et tab[1] = 0
 	if (flag[1] == '-' && tab[0] > tab[1])
 		ft_print_n_char(' ', tab[0] - max_char);
 }

@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:02:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 19:40:46 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/29 16:30:48 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ long long int	get_uint_flagged(va_list va, char c, char d)
 	else if (c == 'h')
 		out = (unsigned short)va_arg(va, unsigned int);
 	else if (c == 'l' || ('A' <= d && d <= 'Z'))
-		out = va_arg(va, unsigned long);
+		out = (unsigned long)va_arg(va, unsigned long);
 	else if (c == 'L')
 		out = va_arg(va, unsigned long long);
 	else if (c == 'j')

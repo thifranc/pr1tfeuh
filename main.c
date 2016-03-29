@@ -12,6 +12,9 @@ int		main(void)
 		*/
 	char	*ptr;
 	char	lol;
+	unsigned long t;
+
+	t = -42;
 
 	lol = 'h';
 	ptr = &lol;
@@ -50,11 +53,13 @@ int		main(void)
 	ft_printf("\033[33mmoi==>\033[0m%-23pfin\n", ptr);
 
 	//test option max string
-	printf("\n nouveau test\n\n");
-	printf("\033[32mref==>%lsfin\n\033[0m", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
-	printf("resultat de ma fonction : \n");
-	ft_printf("\033[33mmoi==>\033[0m%Sfin\n", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
+//	printf("\n nouveau test\n\n");
+//	printf("\033[32mref==>%lsfin\n\033[0m", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
+//	printf("resultat de ma fonction : \n");
+//	ft_printf("\033[33mmoi==>\033[0m%Sfin\n", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
 
-	ft_printf("%s", 12);
+	ft_printf("%lu\n", -42);
+	printf("%lu\n", t);
+	ft_printf("%s", NULL);
 	return (0);
 }

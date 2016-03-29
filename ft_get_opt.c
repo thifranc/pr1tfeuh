@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 18:02:51 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/29 15:56:35 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_error(int flag, char *f)
 	if (flag == 0)
 		printf("qui c'est qui melange les carottes et les choux ta race ?\n");
 	if (flag == 1)
-		printf("pas de '-' ou de '+' avec des unsigned ou des phrases steuplait\n");
+		printf("pas de '-' de ' ' ou de '+' avec des unsigned ou des phrases steuplait\n");
 	if (flag == 2)
 		printf("wesh en fait les '#' ca passe que si tu mets un 'x' un 'X' un 'o' ou un 'O' mec\n");
 	if (flag == 3)
@@ -31,27 +31,27 @@ void	ft_error(int flag, char *f)
 		printf("lol t'as voulu jouer ton malin avec une precision negative et bah ca degage !");
 	if (flag == 7)
 		printf("pas de doublons ds les flags steuplait. al la limite hh et ll j'accepte mais c'est tout");
+	if (flag == 8)
+		printf("c'est quoi ce flag ?\n");
 	exit(-1);
 }
 
 void	final_check(char *flag, int *tab)
 {
-	if ((flag[2] == '-' || flag[2] == '+') && ft_get_char("DIdi", flag[4]) == -1)
+	if (flag[2] && ft_get_char("DIdi", flag[4]) == -1)
 		ft_error(1, flag);
 	if (flag[0] == '#' && ft_get_char("xXoO", flag[4]) == -1)
 		ft_error(2, flag);
 	if (ft_get_char("hHjz", flag[3]) != -1 && ft_get_char("psScC", flag[4]) != -1)
-	{
-		printf("%d = retour get char hHjz && %d retour autre ft\n", ft_get_char("hHjz", flag[3]), ft_get_char("psScC", flag[4]));
-		printf("%c == flag[3] &&&& %c === flag[4]\n", flag[3], flag[4]);
 		ft_error(3, flag);
-	}
 	//if (ft_get_char("sScCpouxOUX", flag[4]) != -1 && flag[2])
 	//	return (0);
 	if ((flag[4] == 'c' || flag[4] == 'C') && tab[1] != -1)
 		ft_error(4, flag);
 	if (flag[1] == '0' && (ft_get_char("psScC", flag[4]) != -1))
 		ft_error(5, flag);
+	if (ft_get_char("spdiouxcCSDOUX", flag[4]) == -1)
+		ft_error(8, flag);
 }
 
 void	ft_get_first_char(char **s, char *flag)

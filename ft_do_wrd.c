@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 17:57:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 17:28:53 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/29 16:40:41 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,32 @@ void	do_wrd(char *flag, int *tab, s_data s)
 {
 	int		max_char;
 
-	max_char = get_max_char(s, tab);
+	max_char = get_max_char(s, tab, flag);
 	if (!flag[1])
 		ft_print_n_char(' ', tab[0] - max_char);
-	if (s.s != 0)
+	if (flag[4] == 's' && !flag[3])
 		ft_putstr(s.s, max_char);
-	else if (s.c_spe != 0)//gerer debut de arg
-		ft_putwchar(s.c_spe);
-	else if (s.s_spe != 0)
+	else if (flag[4] == 'c' && !flag[3])
+		ft_putchar(s.c);
+	else if (flag[4] == 'S' || (flag[3] == 'l' && flag[4] == 's'))
 		ft_putwstr(s.s_spe, max_char);
 	else // (s.c)
-		ft_putchar(s.c);
+		ft_putwchar(s.c_spe);
 	tab[3] += max_char > tab[0] ? max_char : tab[0];//modifier appels fonctions;
 	if (flag[1] == '-')
 		ft_print_n_char(' ', tab[0] - max_char);
 }
 
-int		get_max_char(s_data s, int *tab)
+int		get_max_char(s_data s, int *tab, char *flag)
 {
 	int	max_char;
 
 	max_char = 0;
-	if (s.s)
+	if (flag[4] == 's' && !flag[3])
 		max_char = ft_strlen(s.s);
-	else if (s.s_spe)
+	else if (flag[4] == 'S' || (flag[3] == 'l' && flag[4] == 's'))
 		max_char = ft_wstrlen(s.s_spe);
-	else if (s.c)
+	else if (flag[4] == 'c' && !flag[3])
 		max_char = 1;
 	else //(s.c_spe)
 	{
