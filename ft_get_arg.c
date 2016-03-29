@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:02:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/29 16:30:48 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/29 17:20:43 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ long long int	get_arg_nb(va_list va, char c, char *flag)
 	return (out);
 }
 
-void			get_arg(va_list va, char *flag, int *tab, s_data s)
+void			get_arg(va_list va, char *flag, int *tab, t_data s)
 {
 	long long int	lli;
 

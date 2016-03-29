@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 15:13:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/28 18:01:14 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/29 17:21:02 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //REVOIR FT CLEAR ALL FONCITONNE
 //ET RETURN DE FT CF COMM DO_WRD
 
-void	ft_clear_all(int *tab, char *flag, s_data s)
+void	ft_clear_all(int *tab, char *flag, t_data s)
 {
 	int		i;
 
@@ -51,7 +51,7 @@ int		ft_printf(char *str, ...)
 {
 	int			tab[4];
 	char		f[5];
-	s_data		s;
+	t_data		s;
 	va_list		va;
 
 	va_start(va, str);

@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 17:57:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/29 16:40:41 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/29 17:20:39 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "libftprintf.h"
 
-void	do_wrd(char *flag, int *tab, s_data s)
+void	do_wrd(char *flag, int *tab, t_data s)
 {
 	int		max_char;
 
@@ -34,7 +34,7 @@ void	do_wrd(char *flag, int *tab, s_data s)
 		ft_print_n_char(' ', tab[0] - max_char);
 }
 
-int		get_max_char(s_data s, int *tab, char *flag)
+int		get_max_char(t_data s, int *tab, char *flag)
 {
 	int	max_char;
 

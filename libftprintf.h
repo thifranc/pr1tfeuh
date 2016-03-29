@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 10:07:41 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/29 15:19:29 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/29 17:20:05 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@
 # include <locale.h>
 # include <limits.h>
 
-typedef struct s_data
+typedef struct		s_data
 {
 	wchar_t			c_spe;
 	wchar_t			*s_spe;
 	int				c;
 	const char		*s;
-}					s_data;
+}					t_data;
 
 int					ft_higher(int a, int b);
 int					ft_printf(char *str, ...);
 int					ft_wstrlen(wchar_t *str);
-int					get_max_char(s_data s, int *tab, char *flag);
+int					get_max_char(t_data s, int *tab, char *flag);
 void				ft_get_code(int base, long long int arg);
 void				ft_get_first_char(char **s, char *flag);
 int					ft_power(int n, int puiss);
@@ -45,14 +45,14 @@ void				ft_get_opt(char **s, char *flag, int *tab);
 void				final_check(char *flag, int *tab);
 void				ft_get_last_char(char **s, char *flag);
 long long int		get_int_flagged(va_list va, char c, char d);
-void				get_arg(va_list va, char *flag, int *tab, s_data s);
+void				get_arg(va_list va, char *flag, int *tab, t_data s);
 long long int		get_arg_nb(va_list va, char c, char *flag);
 long long int		get_uint_flagged(va_list va, char c, char d);
 void				ft_putwchar(wchar_t c);
 void				ft_putwstr(wchar_t *str, int n);
-void				do_wrd(char *flag, int *tab, s_data s);
+void				do_wrd(char *flag, int *tab, t_data s);
 void				do_nb(char *flag, int *tab, long long int arg);
-void				print_beg(char *flag, int *tab, int max_char, long long int arg);
+void				print_beg(char *f, int *tab, int m, long long int a);
 int					ft_atoi(char *str);
 void				ft_print_n_char(char c, int n);
 int					ft_base_10(char *str, char *base);
