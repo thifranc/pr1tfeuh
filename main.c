@@ -61,9 +61,9 @@ int		main(void)
 
 	//retour ft
 	printf("\n nouveau test\n\n");
-	printf("ret ft ==>%d\n", printf("%.23ls", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ"));
+	printf("\033[32m  ret ft ==>%d\n\033[m", printf("%.23lsfin", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ"));
 	printf("resultat de ma fonction : \n");
-	ft_printf("\033[33mmoi==>\033[0m%.23Sfin", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ");
+	ft_printf("\033[33m  ret ft ==>%d\n\033[m", ft_printf("%.23Sfin", L"ᓀᐦᐃᔭᐍᐏᐣᐊᓂᔑᓇᐯᒧᐎᐣᑕᗸᒡᑯᖾᖹᓱᖽᐧᖿᐃᓄᒃᑎᑐᑦ"));
 	
 	//test conv unsigned
 	printf("\n nouveau test\n\n");
