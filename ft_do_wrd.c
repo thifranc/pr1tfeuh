@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 17:57:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 12:14:19 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 16:00:49 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int		ft_wstrlen(wchar_t *str, int max)
 
 	i = 0;
 	ct = 0;
+	if (max == -1)
+		max = 2147483647;
 	while (str[i])
 	{
 		if (ct + 1 <= max && str[i] <= 0x7F)
