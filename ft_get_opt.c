@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/29 20:20:52 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 10:06:21 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 
 void	ft_error(int flag, char *f)
 {
-	printf("ERROR CALLED for f == %c|%c|%c|%c|%c\n", f[0], f[1], f[2], f[3], f[4]);
+	ft_put("\033[31musage : your [%] goes  with [#0-+ ] flags then length "); 
+	ft_put("and/or presicion then [hjzl] flags then converter\n\033[m");
+	ft_put("usage is not respected due to : ");
 	if (flag == 0)
-		printf("qui c'est qui melange les carottes et les choux ta race ?\n");
+		ft_put("flags '-' and '0' or flags '+' and ' '\n");
 	if (flag == 1)
-		printf("pas de '-' de ' ' ou de '+' avec des unsigned ou des phrases steuplait\n");
+		ft_put("flags '+' or ' ' with an unsigned or a string converter\n");
 	if (flag == 2)
-		printf("wesh en fait les '#' ca passe que si tu mets un 'x' un 'X' un 'o' ou un 'O' mec\n");
+		ft_put("flags '#' with something else than 'o' or 'x' converter\n");
 	if (flag == 3)
-		printf("vas y mets pas de modif de longueur avec les convertisseurs sSpcC c'est deja assez galere");
+		ft_put("length modifier with a string or a 'p' converter\n");
 	if (flag == 4)
-		printf("lol de mettre une precision avec un c, y a QUE UN TRUC A ECRIRE QU'EST-CE TU FAIS CHIER");
+		ft_put("precision can't go with a char or wchar_t cenverter\n");
 	if (flag == 5)
-		printf("je vais pas ecrire des zero devant des phrases t'es con ou quoi ?");
+		ft_put("flags '0' can't go with string or a 'p' converter\n");
 	if (flag == 6)
-		printf("lol t'as voulu jouer ton malin avec une precision negative et bah ca degage !");
+		ft_put("a precision can't be negative\n");
 	if (flag == 7)
-		printf("pas de doublons ds les flags steuplait. al la limite hh et ll j'accepte mais c'est tout");
+		ft_put("your length modifier flags isn't well put\n");
 	if (flag == 8)
-		printf("c'est quoi ce flag ?\n");
+		ft_put("your converter flag isn't correct, RTFU ! (usage lol)\n");
+	ft_put("\033[32mtry again !\n\033[m");
 	exit(-1);
 }
 
