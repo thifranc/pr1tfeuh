@@ -72,6 +72,9 @@ int		main(void)
 	ft_printf("\033[33mmoi==>\033[0m%ufin\n", -42);
 	ft_printf("\033[33mmoi==>\033[0m%ufin\n", t);
 
+	//test %
+	ft_printf("%-5%");
+
 	//test erreurs
 	ft_printf("%0-d", 23);
 	ft_printf("%-r", 23);

@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 09:03:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/29 15:49:46 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 11:56:57 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ void	do_nb(char *flag, int *tab, long long int arg)
 	print_beg(flag, tab, max_char, arg);
 	if (tab[2] == 16 && flag[4] == 'X')
 		tab[2] = 1;
-	if (arg || tab[1])
+	if (flag[4] == '%')
+		write(1, "%", 1);
+	if ((arg || tab[1]) && flag[4] != '%')
 		ft_get_code(tab[2], arg);//go tnt que y a pas arg = 0 et tab[1] = 0
 	if (flag[1] == '-' && tab[0] > tab[1])
 		ft_print_n_char(' ', tab[0] - max_char);

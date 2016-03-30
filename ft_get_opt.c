@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 10:06:21 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 11:50:30 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	final_check(char *flag, int *tab)
 		ft_error(4, flag);
 	if (flag[1] == '0' && (ft_get_char("psScC", flag[4]) != -1))
 		ft_error(5, flag);
-	if (ft_get_char("spdiouxcCSDOUX", flag[4]) == -1)
+	if (ft_get_char("spdiouxcCSDOUX%", flag[4]) == -1)
 		ft_error(8, flag);
 }
 

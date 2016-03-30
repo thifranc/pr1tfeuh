@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:02:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/29 20:24:51 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 11:55:12 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ void			get_arg(va_list va, char *flag, int *tab, t_data s)
 	long long int	lli;
 
 	lli = 0;
-	if (flag[4] == 'C' || (flag[3] == 'l' && flag[4] == 'c'))
+	if (flag[4] == '%')
+		lli = 1;
+	else if (flag[4] == 'C' || (flag[3] == 'l' && flag[4] == 'c'))
 		s.c_spe = va_arg(va, wchar_t);
 	else if (flag[4] == 's' && flag[3] != 'l')
 		s.s = va_arg(va, const char *);
@@ -95,7 +97,7 @@ void			get_arg(va_list va, char *flag, int *tab, t_data s)
 		flag[2] = '-';
 		lli = -lli;
 	}
-	if (ft_get_char("pdiouxDIOUX", flag[4]) != -1)
+	if (ft_get_char("pdiouxDIOUX%", flag[4]) != -1)
 		do_nb(flag, tab, lli);
 	else
 		do_wrd(flag, tab, s);
