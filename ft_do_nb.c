@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 09:03:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 11:56:57 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 12:15:15 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		get_total_char(long long int arg, char *f, int *tab)
 		tab[2] = 10;
 	len = ft_nb_len_base(arg, tab[2]);
 	tmp = len > tab[1] ? len : tab[1];
-	if ((f[0] == '#' && (f[4] == 'o' || f[4] == 'O')) || f[2] != '\0')
+	if ((f[0] == '#' && (f[4] == 'o' || f[4] == 'O')) || (f[2] && f[4] != '%'))
 		tmp++;
 	if ((f[0] == '#' && (f[4] == 'x' || f[4] == 'X')) || f[4] == 'p')
 		tmp += 2;
@@ -38,9 +38,10 @@ void	print_beg(char *flag, int *tab, int max_char, long long int arg)
 {
 	if ((!flag[1] || (flag[1] == '0' && tab[1] >= 0)))
 		ft_print_n_char(' ', tab[0] - max_char);
-	if (flag[2] != '\0')
+	if (flag[2] && flag[4] != '%')
 		write(1, &flag[2], 1);
-	if ((flag[0] == '#' && (flag[4] == 'X' || flag[4] == 'x')) || flag[4] == 'p')
+	if ((flag[0] == '#'
+			&& (flag[4] == 'X' || flag[4] == 'x')) || flag[4] == 'p')
 		flag[4] == 'X' ? write(1, "0X", 2) : write(1, "0x", 2);
 	if (flag[0] == '#' && (flag[4] == 'o' || flag[4] == 'O'))
 		write(1, "0", 1);
@@ -56,14 +57,14 @@ void	do_nb(char *flag, int *tab, long long int arg)
 	if (!arg && flag[4] != 'o' && flag[4] != 'O')
 		flag[0] = 0;
 	max_char = get_total_char(arg, flag, tab);
-	tab[3] += ft_higher(max_char, ft_higher(tab[0], tab[1]));//higher of 3
+	tab[3] += ft_higher(max_char, ft_higher(tab[0], tab[1]));
 	print_beg(flag, tab, max_char, arg);
 	if (tab[2] == 16 && flag[4] == 'X')
 		tab[2] = 1;
 	if (flag[4] == '%')
 		write(1, "%", 1);
 	if ((arg || tab[1]) && flag[4] != '%')
-		ft_get_code(tab[2], arg);//go tnt que y a pas arg = 0 et tab[1] = 0
+		ft_get_code(tab[2], arg);
 	if (flag[1] == '-' && tab[0] > tab[1])
 		ft_print_n_char(' ', tab[0] - max_char);
 }

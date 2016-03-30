@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:02:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 11:55:12 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 12:05:24 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ long long int	get_int_flagged(va_list va, char c, char d)
 	long long int	out;
 
 	if (c == 'H')
-		out = (signed char)va_arg(va, int);//auto promoted
+		out = (signed char)va_arg(va, int);
 	else if (c == 'l' || ('A' <= d && d <= 'Z'))
 		out = va_arg(va, long);
 	else if (c == 'h')
@@ -26,8 +26,8 @@ long long int	get_int_flagged(va_list va, char c, char d)
 		out = va_arg(va, long long);
 	else if (c == 'j')
 		out = va_arg(va, intmax_t);
-	else // (c == 'z')
-		out = va_arg(va, ssize_t);//+-= signed size_t
+	else
+		out = va_arg(va, ssize_t);
 	return (out);
 }
 
@@ -46,9 +46,9 @@ long long int	get_uint_flagged(va_list va, char c, char d)
 		out = va_arg(va, unsigned long long);
 	else if (c == 'j')
 		out = va_arg(va, uintmax_t);
-	else // (c == 'z')
+	else
 		out = va_arg(va, size_t);
-	return ((unsigned long long)out);
+	return (out);
 }
 
 long long int	get_arg_nb(va_list va, char c, char *flag)
@@ -59,7 +59,7 @@ long long int	get_arg_nb(va_list va, char c, char *flag)
 	{
 		if (ft_get_char("ouxOUX", c) != -1)
 			out = get_uint_flagged(va, flag[3], flag[4]);
-		else //(ft_get_char("DIdi", c) != -1)
+		else
 			out = get_int_flagged(va, flag[3], flag[4]);
 	}
 	else
@@ -68,10 +68,9 @@ long long int	get_arg_nb(va_list va, char c, char *flag)
 			out = va_arg(va, int);
 		else if (ft_get_char("ouxX", c) != -1)
 			out = va_arg(va, unsigned int);
-		else //(c == 'p')
-			out = va_arg(va, long long);//puis printf hexa prefixe de 0x
+		else
+			out = va_arg(va, long long);
 	}
-	//printf("out vaut ca = %lli\n", out);
 	return (out);
 }
 
@@ -90,7 +89,7 @@ void			get_arg(va_list va, char *flag, int *tab, t_data s)
 		s.s_spe = va_arg(va, wchar_t *);
 	else if (flag[4] == 'c')
 		s.c = va_arg(va, int);
-	else //(ft_get_char("pdiouxDIOUX", flag[4]) != -1)
+	else
 		lli = get_arg_nb(va, flag[4], flag);
 	if (lli < 0)
 	{

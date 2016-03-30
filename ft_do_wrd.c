@@ -6,11 +6,9 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 17:57:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/29 19:58:22 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 12:14:19 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//RESTE PROBLEME DE RETOUR DE FONCTION CF MAIN_TEST SINON TOUT ROULE
 
 #include "libftprintf.h"
 
@@ -27,7 +25,7 @@ void	do_wrd(char *flag, int *tab, t_data s)
 		ft_putchar(s.c);
 	else if (flag[4] == 'S' || (flag[3] == 'l' && flag[4] == 's'))
 		ft_putwstr(s.s_spe, max_char);
-	else // (s.c)
+	else
 		ft_putwchar(s.c_spe);
 	tab[3] += max_char > tab[0] ? max_char : tab[0];
 	if (flag[1] == '-')
@@ -45,7 +43,7 @@ int		get_max_char(t_data s, int *tab, char *flag)
 		max = ft_wstrlen(s.s_spe, tab[1]);
 	else if (flag[4] == 'c' && !flag[3])
 		max = 1;
-	else //(s.c_spe)
+	else
 	{
 		if (s.c_spe <= 0x7F)
 			max = 1;
@@ -77,9 +75,8 @@ int		ft_wstrlen(wchar_t *str, int max)
 			ct += 2;
 		else if (ct + 3 <= max && str[i] <= 0xFFFF)
 			ct += 3;
-		else // (str[i] <= 0x1FFFFF)
-			if (ct + 4 <= max)
-				ct += 4;
+		else if (ct + 4 <= max)
+			ct += 4;
 		i++;
 	}
 	return (ct);
@@ -98,7 +95,7 @@ void	ft_putwstr(wchar_t *str, int ct)
 			ct -= 2;
 		else if (str[i] <= 0xFFFF)
 			ct -= 3;
-		else // (str[i] <= 0x1FFFFF)
+		else
 			ct -= 4;
 		if (ct >= 0)
 			ft_putwchar(str[i]);

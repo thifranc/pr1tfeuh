@@ -6,16 +6,13 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 15:13:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/29 17:21:02 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 12:13:00 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-//REVOIR FT CLEAR ALL FONCITONNE
-//ET RETURN DE FT CF COMM DO_WRD
-
-void	ft_clear_all(int *tab, char *flag, t_data s)
+void	ft_clear_all(int *tab, char *flag)
 {
 	int		i;
 
@@ -25,10 +22,6 @@ void	ft_clear_all(int *tab, char *flag, t_data s)
 	i = -1;
 	while (++i < 5)
 		flag[i] = 0;
-	s.s = NULL;
-	s.c = 0;
-	s.s_spe = NULL;
-	s.c_spe = 0;
 }
 
 int		ft_strlen_char(const char *s, char b)
@@ -60,13 +53,8 @@ int		ft_printf(char *str, ...)
 	{
 		tab[3] += ft_strcount(str, '%');
 		str += ft_strlen_char(str, '%');
-		ft_clear_all(tab, f, s);//structure a clearer | attention appel function avec & ou non ?
-		if (*str && *(str + 1) == '%')
-		{
-			tab[3] += ft_strcount("%", '\0');
-			str += 2;
-		}
-		else if (*str && *(str + 1) != '%')
+		ft_clear_all(tab, f);
+		if (*str)
 		{
 			ft_get_opt(&str, f, tab);
 			get_arg(va, f, tab, s);

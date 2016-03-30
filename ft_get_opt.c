@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 11:50:30 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 12:13:27 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_error(int flag, char *f)
 {
-	ft_put("\033[31musage : your [%] goes  with [#0-+ ] flags then length "); 
+	ft_put("\033[31musage : your [%] goes  with [#0-+ ] flags then length ");
 	ft_put("and/or presicion then [hjzl] flags then converter\n\033[m");
 	ft_put("usage is not respected due to : ");
 	if (flag == 0)
@@ -41,11 +41,12 @@ void	ft_error(int flag, char *f)
 
 void	final_check(char *flag, int *tab)
 {
-	if (flag[2] && ft_get_char("DIdi", flag[4]) == -1)
+	if (flag[2] && ft_get_char("DIdi%", flag[4]) == -1)
 		ft_error(1, flag);
 	if (flag[0] == '#' && ft_get_char("xXoO", flag[4]) == -1)
 		ft_error(2, flag);
-	if (ft_get_char("hHjz", flag[3]) != -1 && ft_get_char("psScC", flag[4]) != -1)
+	if (ft_get_char("hHjz", flag[3]) != -1
+		&& ft_get_char("psScC", flag[4]) != -1)
 		ft_error(3, flag);
 	if ((flag[4] == 'c' || flag[4] == 'C') && tab[1] != -1)
 		ft_error(4, flag);
