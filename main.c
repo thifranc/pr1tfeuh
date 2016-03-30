@@ -71,5 +71,13 @@ int		main(void)
 	printf("resultat de ma fonction : \n");
 	ft_printf("\033[33mmoi==>\033[0m%ufin\n", -42);
 	ft_printf("\033[33mmoi==>\033[0m%ufin\n", t);
+
+	//test erreurs
+	ft_printf("%0-d", 23);
+	ft_printf("%-r", 23);
+	ft_printf("%+u", 12);
+	ft_printf("%12.-23d", 12);
+
+
 	return (0);
 }
