@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 10:07:41 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 10:02:04 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 17:29:21 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ int					ft_higher(int a, int b);
 int					ft_printf(char *str, ...);
 int					ft_wstrlen(wchar_t *str, int max);
 int					get_max_char(t_data s, int *tab, char *flag);
-void				ft_get_code(int base, long long int arg);
+void				ft_get_code(int base, long long int arg, char *flag);
 void				ft_get_first_char(char **s, char *flag);
 int					ft_power(int n, int puiss);
 int					ft_strcount(const char *s, char b);
 int					ft_strlen_char(const char *s, char b);
 void				ft_putnb_base(long long int nb, char *base);
+void				ft_putnb_base2(unsigned long long int nb, char *base);
 int					ft_nb_len_base(long long int n, int base);
+int					ft_nb_len_base2(unsigned long long int n, int base);
 void				ft_get_opt(char **s, char *flag, int *tab);
 void				final_check(char *flag, int *tab);
 void				ft_get_last_char(char **s, char *flag);

@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/16 13:02:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 12:05:24 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 17:22:42 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void			get_arg(va_list va, char *flag, int *tab, t_data s)
 		s.c = va_arg(va, int);
 	else
 		lli = get_arg_nb(va, flag[4], flag);
-	if (lli < 0)
+	if (lli < 0 && ft_get_char("diDI", flag[4]) != -1)
 	{
 		flag[2] = '-';
 		lli = -lli;

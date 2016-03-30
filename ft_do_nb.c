@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 09:03:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 15:35:30 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 17:33:10 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int		get_total_char(long long int arg, char *f, int *tab)
 		tab[2] = 10;
 	if (f[4] == '%')
 		tab[1] = 0;
-	len = ft_nb_len_base(arg, tab[2]);
+	if (ft_get_char("diDI", f[4]) != -1)
+		len = ft_nb_len_base(arg, tab[2]);
+	else
+		len = ft_nb_len_base2((unsigned long long)arg, tab[2]);
 	tmp = len > tab[1] ? len : tab[1];
 	if ((f[0] == '#' && (f[4] == 'o' || f[4] == 'O')) || (f[2] && f[4] != '%'))
 		tmp++;
@@ -43,7 +46,7 @@ void	print_beg(char *flag, int *tab, int max_char, long long int arg)
 	if (flag[2] && flag[4] != '%')
 		write(1, &flag[2], 1);
 	if ((flag[0] == '#'
-			&& (flag[4] == 'X' || flag[4] == 'x')) || flag[4] == 'p')
+				&& (flag[4] == 'X' || flag[4] == 'x')) || flag[4] == 'p')
 		flag[4] == 'X' ? write(1, "0X", 2) : write(1, "0x", 2);
 	if (flag[0] == '#' && (flag[4] == 'o' || flag[4] == 'O'))
 		write(1, "0", 1);
@@ -66,12 +69,12 @@ void	do_nb(char *flag, int *tab, long long int arg)
 	if (flag[4] == '%')
 		write(1, "%", 1);
 	if ((arg || tab[1]) && flag[4] != '%')
-		ft_get_code(tab[2], arg);
+		ft_get_code(tab[2], arg, flag);
 	if (flag[1] == '-' && tab[0] > tab[1])
 		ft_print_n_char(' ', tab[0] - max_char);
 }
 
-void	ft_get_code(int base, long long int arg)
+void	ft_get_code(int base, long long int arg, char *flag)
 {
 	char	*out;
 
@@ -82,6 +85,9 @@ void	ft_get_code(int base, long long int arg)
 		out = ft_strdup("0123456789abcdefghijklmonpqrstuvwxyz");
 		out[base] = '\0';
 	}
-	ft_putnb_base(arg, out);
+	if (ft_get_char("diDI", flag[4]) != -1)
+		ft_putnb_base(arg, out);
+	else
+		ft_putnb_base2((unsigned long long int)arg, out);
 	free(out);
 }
