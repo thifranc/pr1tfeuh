@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 15:35:42 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 16:42:50 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_error(int flag, char *f)
 {
 	ft_put("\033[31musage : your [%] goes  with [#0-+ ] flags then length ");
-	ft_put("and/or presicion then [hjzl] flags then converter\n\033[m");
+	ft_put("and/or precision then [hjzl] flags then converter\n\033[m");
 	ft_put("usage is not respected due to : ");
 	if (flag == 0)
 		ft_put("flags '-' and '0' or flags '+' and ' '\n");
