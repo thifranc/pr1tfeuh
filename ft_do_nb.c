@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 09:03:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 12:15:15 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/30 15:35:30 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int		get_total_char(long long int arg, char *f, int *tab)
 		tab[2] = 8;
 	else
 		tab[2] = 10;
+	if (f[4] == '%')
+		tab[1] = 0;
 	len = ft_nb_len_base(arg, tab[2]);
 	tmp = len > tab[1] ? len : tab[1];
 	if ((f[0] == '#' && (f[4] == 'o' || f[4] == 'O')) || (f[2] && f[4] != '%'))
