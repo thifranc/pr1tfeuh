@@ -91,6 +91,14 @@ int		main(void)
 	printf("\033[33mmoi==>%#%fin\n\033[0m");
 	printf("\033[33mmoi==>%-9.3%fin\n\033[0m");
 
+	//test null
+	printf("\n nouveau test\n\n");
+	printf("\033[32mref==>%sfin\n\033[0m", NULL);
+	printf("\033[32mref==>%cfin\n\033[0m", 0);
+	printf("resultat de ma fonction : \n");
+	ft_printf("\033[33mmoi==>\033[0m%sfin\n", NULL);
+	ft_printf("\033[33mmoi==>\033[0m%cfin\n", 0);
+
 	//test erreurs
 	ft_printf("%0-d", 23);
 	ft_printf("%-r", 23);
