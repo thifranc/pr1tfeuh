@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 10:07:41 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 17:29:21 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/31 11:10:29 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,7 @@ int					ft_atoi(char *str);
 void				ft_print_n_char(char c, int n);
 int					ft_base_10(char *str, char *base);
 int					get_total_char(long long int arg, char *flag, int *tab);
-void				ft_bzero(void *s, size_t n);
 int					ft_get_char(char *s, char c);
-char				*ft_itoa(int n);
 int					ft_max(int *tab, int size);
 int					ft_min(int *tab, int size);
 void				ft_putchar(char c);
@@ -72,26 +70,17 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putstr(char const *s, int n);
 void				ft_putstr_fd(char const *s, int fd);
 char				*ft_strcat(char *s1, const char *s2);
-size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strchr(const char *s1, int c);
-void				ft_strclr(char *s);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strcpy(char *s1, const char *s2);
-void				ft_strdel(char **as);
 char				*ft_strdup(const char *str);
-int					ft_strequ(char const *s1, char const *s2);
-void				ft_striter(char *s, void (*f)(char *c));
-void				ft_striteri(char *s, void (*f)(unsigned int, char *));
-char				*ft_strjoin(char const *s1, char const *s2);
 int					ft_strlen(const char *c);
 char				*ft_strncat(char *s1, const char *s2, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *s1, const char *s2, size_t n);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strnew(size_t size);
-char				*ft_strrchr(const char *s1, int c);
 char				*ft_strstr(const char *s1, const char *s2);
 char				*ft_strnstr(const char *s1, const char *s2, size_t len);
-char				*ft_strsub(char const *s, unsigned int start, size_t len);
 
 #endif

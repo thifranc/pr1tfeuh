@@ -76,19 +76,19 @@ int		main(void)
 	printf("\n nouveau test\n\n");
 	printf("\033[32mref==>%lufin\n\033[0m", (long unsigned)-42);
 	printf("resultat de ma fonction : \n");
-	ft_printf("\033[33mmoi==>\033[0m%lufin\n", -42);
+	ft_printf("\033[33mmoi==>\033[0m%lufin\n", (long unsigned)-42);
 	ft_printf("\033[33mmoi==>\033[0m%lufin\n", (unsigned long)t);
 
 	//test %
-	printf("\n nouveau test\n\n");
+	printf("\n nouveau test pour %%%%\n\n");
 	printf("\033[32mref==>%.22%fin\n\033[0m");
 	printf("\033[32mref==>%6.2%fin\n\033[0m");
-	printf("\033[32mref==>%#%fin\n\033[0m");
+	printf("\033[32mref==>%09.8%fin\n\033[0m");
 	printf("\033[32mref==>%-9.3%fin\n\033[0m");
 	printf("resultat de ma fonction : \n");
 	ft_printf("\033[33mmoi==>%.22%fin\n\033[0m");
 	printf("\033[33mmoi==>%6.2%fin\n\033[0m");
-	printf("\033[33mmoi==>%#%fin\n\033[0m");
+	printf("\033[33mmoi==>%09.8%fin\n\033[0m");
 	printf("\033[33mmoi==>%-9.3%fin\n\033[0m");
 
 	//test null
@@ -99,12 +99,12 @@ int		main(void)
 	ft_printf("\033[33mmoi==>\033[0m%sfin\n", NULL);
 	ft_printf("\033[33mmoi==>\033[0m%cfin\n", 0);
 
+	//test couleurs
+	ft_printf("bonjour {blue} lol\n");
 	//test erreurs
 	ft_printf("%0-d", 23);
 	ft_printf("%-r", 23);
 	ft_printf("%+u", 12);
 	ft_printf("%12.-23d", 12);
-
-
 	return (0);
 }
