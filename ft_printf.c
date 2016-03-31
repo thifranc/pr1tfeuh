@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 15:13:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/31 11:07:22 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/31 11:30:11 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,15 @@ int		ft_strcount(const char *s, char b)
 
 void	ft_opt_color(char *str)
 {
-	if (ft_strstr(str, "{red}"))
+	if (!*str)
+		ft_put("\033[0m");
+	else if (ft_strstr(str, "{red}"))
 		ft_put("\033[31m");
-	if (ft_strstr(str, "{yellow}"))
+	else if (ft_strstr(str, "{yellow}"))
 		ft_put("\033[33m");
-	if (ft_strstr(str, "{green}"))
+	else if (ft_strstr(str, "{green}"))
 		ft_put("\033[32m");
-	if (ft_strstr(str, "{blue}"))
+	else if (ft_strstr(str, "{blue}"))
 		ft_put("\033[34m");
 }
 
@@ -74,5 +76,6 @@ int		ft_printf(char *str, ...)
 		}
 	}
 	va_end(va);
+	ft_opt_color(str);
 	return (tab[3]);
 }

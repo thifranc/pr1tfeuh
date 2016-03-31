@@ -101,6 +101,7 @@ int		main(void)
 
 	//test couleurs
 	ft_printf("bonjour {blue} lol\n");
+	ft_printf("lol %b \n", 10);
 	//test erreurs
 	ft_printf("%0-d", 23);
 	ft_printf("%-r", 23);

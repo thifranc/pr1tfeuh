@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/15 13:12:12 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 16:42:50 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/31 11:27:09 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	final_check(char *flag, int *tab)
 {
 	if (flag[2] && ft_get_char("DIdi%", flag[4]) == -1)
 		ft_error(1, flag);
-	if (flag[0] == '#' && ft_get_char("xXoO%", flag[4]) == -1)
+	if (flag[0] == '#' && ft_get_char("xXoOb%", flag[4]) == -1)
 		ft_error(2, flag);
 	if (ft_get_char("hHjz", flag[3]) != -1
 		&& ft_get_char("psScC", flag[4]) != -1)
@@ -52,7 +52,7 @@ void	final_check(char *flag, int *tab)
 		ft_error(4, flag);
 	if (flag[1] == '0' && (ft_get_char("psScC", flag[4]) != -1))
 		ft_error(5, flag);
-	if (ft_get_char("spdiouxcCSDOUX%", flag[4]) == -1)
+	if (ft_get_char("spdiouxcbCSDOUX%", flag[4]) == -1)
 		ft_error(8, flag);
 }
 

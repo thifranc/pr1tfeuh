@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 09:03:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/30 17:33:10 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/03/31 11:27:06 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int		get_total_char(long long int arg, char *f, int *tab)
 		tab[2] = 16;
 	else if (f[4] == 'o')
 		tab[2] = 8;
+	else if (f[4] == 'b')
+		tab[2] = 2;
 	else
 		tab[2] = 10;
 	if (f[4] == '%')
