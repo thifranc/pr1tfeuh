@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 10:07:41 by thifranc          #+#    #+#             */
-/*   Updated: 2016/04/05 16:59:26 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/04/05 17:28:19 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,7 @@ int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strcpy(char *s1, const char *s2);
 char				*ft_strdup(const char *str);
 int					ft_strlen(const char *c);
-char				*ft_strncat(char *s1, const char *s2, size_t n);
-int					ft_strncmp(const char *s1, const char *s2, size_t n);
-char				*ft_strncpy(char *s1, const char *s2, size_t n);
-int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strnew(size_t size);
-char				*ft_strstr(const char *s1, const char *s2);
 char				*ft_strnstr(const char *s1, const char *s2, size_t len);
 
 #endif
