@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 10:07:41 by thifranc          #+#    #+#             */
-/*   Updated: 2016/04/05 17:28:19 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/04/05 17:34:49 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct		s_data
 }					t_data;
 
 void				ft_put(char *s);
-char				*ft_strnstr(const char *s1, const char *s2, size_t nb);
 int					ft_higher(int a, int b);
 int					ft_printf(char *str, ...);
 int					ft_wstrlen(wchar_t *str, int max);
@@ -59,24 +58,13 @@ void				do_nb(char *flag, int *tab, long long int arg);
 void				print_beg(char *f, int *tab, int m, long long int a);
 int					ft_atoi(char *str);
 void				ft_print_n_char(char c, int n);
-int					ft_base_10(char *str, char *base);
 int					get_total_char(long long int arg, char *flag, int *tab);
 int					ft_get_char(char *s, char c);
-int					ft_max(int *tab, int size);
-int					ft_min(int *tab, int size);
 void				ft_putchar(char c);
-void				ft_putchar_fd(char d, int fd);
-void				ft_putendl(char const *s);
-void				ft_putendl_fd(char const *s, int fd);
 void				ft_putstr(char const *s, int n);
-void				ft_putstr_fd(char const *s, int fd);
-char				*ft_strcat(char *s1, const char *s2);
-char				*ft_strchr(const char *s1, int c);
-int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strcpy(char *s1, const char *s2);
 char				*ft_strdup(const char *str);
 int					ft_strlen(const char *c);
-char				*ft_strnew(size_t size);
 char				*ft_strnstr(const char *s1, const char *s2, size_t len);
 
 #endif
