@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 15:13:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/31 11:30:11 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/04/05 17:20:29 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,21 @@ int		ft_strcount(const char *s, char b)
 	return (ft_strlen_char(s, b));
 }
 
-void	ft_opt_color(char *str)
+void	ft_opt_color(char *str, int *opt)
 {
-	if (!*str)
-		ft_put("\033[0m");
-	else if (ft_strstr(str, "{red}"))
+	char	*out;
+
+	out = 0;
+	if ((out = ft_strnstr(str, "{red}", 10)) != NULL)
 		ft_put("\033[31m");
-	else if (ft_strstr(str, "{yellow}"))
+	else if ((out = ft_strnstr(str, "{yellow}", 10)) != NULL)
 		ft_put("\033[33m");
-	else if (ft_strstr(str, "{green}"))
+	else if ((out = ft_strnstr(str, "{green}", 10)) != NULL)
 		ft_put("\033[32m");
-	else if (ft_strstr(str, "{blue}"))
+	else if ((out = ft_strnstr(str, "{blue}", 10)) != NULL)
 		ft_put("\033[34m");
+	if (out)
+		*opt = 1;
 }
 
 int		ft_printf(char *str, ...)
@@ -59,11 +62,11 @@ int		ft_printf(char *str, ...)
 	int			tab[4];
 	char		f[5];
 	t_data		s;
+	int			opt;
 	va_list		va;
 
 	va_start(va, str);
 	tab[3] = 0;
-	ft_opt_color(str);
 	while (*str)
 	{
 		tab[3] += ft_strcount(str, '%');
@@ -71,11 +74,14 @@ int		ft_printf(char *str, ...)
 		ft_clear_all(tab, f);
 		if (*str)
 		{
+			opt = 0;
+			ft_opt_color(str - 10, &opt);
 			ft_get_opt(&str, f, tab);
 			get_arg(va, f, tab, s);
+			if (opt)
+				ft_put("\033[0m");
 		}
 	}
 	va_end(va);
-	ft_opt_color(str);
 	return (tab[3]);
 }

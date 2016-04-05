@@ -100,7 +100,7 @@ int		main(void)
 	ft_printf("\033[33mmoi==>\033[0m%cfin\n", 0);
 
 	//test couleurs
-	ft_printf("bonjour {blue} lol\n");
+	ft_printf("bonjour {blue}%d {yellow}%s lol\n", 8764, "des barres");
 	ft_printf("lol %b \n", 10);
 	//test erreurs
 	ft_printf("%0-d", 23);

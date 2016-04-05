@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 10:07:41 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/31 11:10:29 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/04/05 16:59:26 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct		s_data
 }					t_data;
 
 void				ft_put(char *s);
+char				*ft_strnstr(const char *s1, const char *s2, size_t nb);
 int					ft_higher(int a, int b);
 int					ft_printf(char *str, ...);
 int					ft_wstrlen(wchar_t *str, int max);
