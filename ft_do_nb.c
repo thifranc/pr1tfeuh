@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/20 09:03:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/31 11:27:06 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/04/05 18:58:59 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		get_total_char(long long int arg, char *f, int *tab)
 	else
 		tab[2] = 10;
 	if (f[4] == '%')
-		tab[1] = 0;
+		tab[1] = -1;
 	if (ft_get_char("diDI", f[4]) != -1)
 		len = ft_nb_len_base(arg, tab[2]);
 	else
