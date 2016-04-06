@@ -6,7 +6,7 @@
 #    By: thifranc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/04 19:24:34 by thifranc          #+#    #+#              #
-#    Updated: 2016/04/05 17:27:52 by thifranc         ###   ########.fr        #
+#    Updated: 2016/04/06 09:59:16 by thifranc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,9 @@ FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME):
-	gcc -c $(SRCS)
+	gcc -c $(FLAGS) $(SRCS)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	make clean
 
 clean:
 	@$(RM) $(OBJ)

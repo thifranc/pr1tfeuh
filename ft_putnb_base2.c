@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/12 14:53:24 by thifranc          #+#    #+#             */
-/*   Updated: 2016/03/31 10:30:01 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/04/06 10:05:40 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnb_base2(unsigned long long int n, char *base)
 {
-	if (n < ft_strlen(base))
+	if (n < (unsigned long long int)ft_strlen(base))
 		ft_putchar(base[n]);
 	else
 	{

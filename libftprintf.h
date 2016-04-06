@@ -6,7 +6,7 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 10:07:41 by thifranc          #+#    #+#             */
-/*   Updated: 2016/04/05 17:34:49 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/04/06 10:19:32 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef struct		s_data
 }					t_data;
 
 void				ft_put(char *s);
+void				ft_error(int flag);
+void				ft_opt_color(char *str, int *opt);
+void				ft_clear_all(int *tab, char *flag, t_data *s);
 int					ft_higher(int a, int b);
 int					ft_printf(char *str, ...);
 int					ft_wstrlen(wchar_t *str, int max);

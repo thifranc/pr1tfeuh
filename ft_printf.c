@@ -6,13 +6,13 @@
 /*   By: thifranc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/23 15:13:06 by thifranc          #+#    #+#             */
-/*   Updated: 2016/04/05 17:20:29 by thifranc         ###   ########.fr       */
+/*   Updated: 2016/04/06 10:07:14 by thifranc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_clear_all(int *tab, char *flag)
+void	ft_clear_all(int *tab, char *flag, t_data *s)
 {
 	int		i;
 
@@ -22,6 +22,10 @@ void	ft_clear_all(int *tab, char *flag)
 	i = -1;
 	while (++i < 5)
 		flag[i] = 0;
+	(*s).s_spe = 0;
+	(*s).c_spe = 0;
+	(*s).s = 0;
+	(*s).c = 0;
 }
 
 int		ft_strlen_char(const char *s, char b)
@@ -71,7 +75,7 @@ int		ft_printf(char *str, ...)
 	{
 		tab[3] += ft_strcount(str, '%');
 		str += ft_strlen_char(str, '%');
-		ft_clear_all(tab, f);
+		ft_clear_all(tab, f, &s);
 		if (*str)
 		{
 			opt = 0;
